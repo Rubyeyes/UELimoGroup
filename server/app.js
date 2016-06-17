@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+// import environment configuration
+var config = require('./config/environment/development');
+
 // add models
 require('./models/Posts');
 require('./models/Comments');
@@ -21,7 +24,14 @@ var routes = require('./routes/index');
 var app = express();
 
 // connect mongodb
-mongoose.connect('mongodb://localhost/news')
+mongoose.connect('mongodb://localhost/news');
+mongoose.connection.on('error', function(err) {
+  console.error('MongoDB connection error: ' + err);
+  process.exit(-1);
+});
+
+// Populate databases with sample data
+if (config.seedDB) { require('./config/seed'); }
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

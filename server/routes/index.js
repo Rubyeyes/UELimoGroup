@@ -165,7 +165,7 @@ router.param('user', function(req, res, next, id) {
 
 /* User register */
 router.post('/api/register', function(req, res, next) {
-	if(!req.body.username || !req.body.password) {
+	if(!req.body.username || !req.body.password || !req.body.email) {
 		return res.status(400).json({message: 'Please fill out all fields'});
 	}
 
@@ -186,9 +186,9 @@ router.post('/api/register', function(req, res, next) {
 
 /* User login */
 router.post('/api/login', function(req, res, next) {	
-  if(!req.body.username || !req.body.password){
+  if(!req.body.email || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
-  }
+  }; 
 
   passport.authenticate('local', function(err, user, info){
     if(err){ return next(err); }
@@ -202,8 +202,25 @@ router.post('/api/login', function(req, res, next) {
 });
 
 /* Get user info*/
-router.get('/api/users/:user', function(res, res, next) {
+router.get('/api/users/:user', function(req, res, next) {
 	res.json(res.user);
-})
+});
+
+router.get('/api/usersnameemail', function(req, res) {
+	User.find({}, function(err, users) {
+		var usersNameEmail = [];
+		var i = 0;
+
+		users.forEach(function(user) { 
+			usersNameEmail[i] = {
+				"username": user.username,
+				"email": user.email
+			}
+			i += 1;
+		});
+
+		res.json(usersNameEmail);
+	});
+});
 
 module.exports = router;

@@ -14,8 +14,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/register">Sign up</a></li>
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-        <li ng-show="isLoggedIn()" ><a href="/profile">Yo {{ currentUser() }}</a> </li>
-        <li ng-show="isLoggedIn()" ng-click="logOut()"><a href="#">Logout</a></li>
+        <li class="dropdown" ng-show="isLoggedIn()">
+          <a href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button">Hola~! {{ currentUser() }} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ng-click="logOut()"><a href="#">Logout</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

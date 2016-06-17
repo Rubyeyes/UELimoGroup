@@ -1,6 +1,7 @@
 angular.module('FrEExApp', [
 			'ui.router',
-			'ui.bootstrap'
+			'ui.bootstrap',
+			'validation.match'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
 			$stateProvider

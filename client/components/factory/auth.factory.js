@@ -31,7 +31,9 @@ angular.module('FrEExApp')
 			auth.logIn = function(user) {
 				return $http.post('/api/login', user).then(function(response) {
 					auth.saveToken(response.data.token);
-				});
+				}, function(err) {
+					return err.data;
+				})
 			};
 
 			auth.logOut = function() {
@@ -61,7 +63,13 @@ angular.module('FrEExApp')
 				} else {
 					return false;
 				}
-			}
+			};
+
+			auth.getUsersNameEmail = function() {
+				return $http.get('/api/usersnameemail').then(function(response) {
+					return response.data;
+				})
+			};
 
 			return auth;
 		}])

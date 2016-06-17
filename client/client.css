@@ -4,9 +4,14 @@
 
 .navbar-second {
 	min-height: 40px;
-	background-color: #1767A7;
+	background-color: #333;
+	z-index: 0;
 }
 
-.nav-second-a {
-	color: #FFFFFF;
+.nav-second-a{
+	color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
 }

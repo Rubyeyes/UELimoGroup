@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('FrEExApp')
-	.controller('NavCtrl', ['$scope', '$location', 'Auth', function($scope, $location, Auth) {
+	.controller('NavCtrl', ['$scope', '$location', '$state', 'Auth', function($scope, $location, $state, Auth) {
 		$scope.isLoggedIn = Auth.isLoggedIn;
 		$scope.currentUser = Auth.currentUser;
-		$scope.logOut = Auth.logOut;
 		$scope.isCollapsed = true;
 		$scope.isSecondCollapsed = true;
+
+		$scope.logOut = function() {
+			Auth.logOut()
+			$state.go('home');
+		}
 
 		$scope.collaps = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
