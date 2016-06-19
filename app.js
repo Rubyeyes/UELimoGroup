@@ -26,12 +26,9 @@ var app = express();
 // connect mongodb
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
-              };       
- 
-var mongodbUri = 'mongodb://catian:Tca89315@ds021462.mlab.com:21462/heroku_q0bdbw84';//Mlab
+              }; 
 //var mongodbUri = 'mongodb://localhost/news';//Local
- 
-mongoose.connect(mongodbUri, options);
+mongoose.connect(MONGODB_URI, options);
 mongoose.connection.on('error', function(err) {
   console.error('MongoDB connection error: ' + err);
   process.exit(-1);
@@ -105,7 +102,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '5000');
+var port = normalizePort(process.env.PORT || 5000);
 app.set('port', port);
 
 /**
@@ -119,7 +116,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port, function() {
-  console.log("Connected to port 5000")
+  console.log("Connected to port", app.get('port'))
 });
 server.on('error', onError);
 server.on('listening', onListening);

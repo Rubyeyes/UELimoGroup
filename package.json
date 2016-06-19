@@ -2,6 +2,7 @@
   "name": "mytemplate",
   "version": "1.0.0",
   "description": "A general template",
+  "private": true,
   "engines": {
     "node": "5.9.0",
     "npm": "3.7.3"
