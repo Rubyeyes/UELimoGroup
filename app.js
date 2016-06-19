@@ -27,8 +27,9 @@ var app = express();
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               }; 
+var mongodburi = ENV["MONGODB_URI"];
 //var mongodbUri = 'mongodb://localhost/news';//Local
-mongoose.connect(MONGODB_URI, options);
+mongoose.connect(mongodburi, options);
 mongoose.connection.on('error', function(err) {
   console.error('MongoDB connection error: ' + err);
   process.exit(-1);
