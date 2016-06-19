@@ -25,7 +25,8 @@ var app = express();
 
 // connect mongodb
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } };       
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
+              };       
  
 var mongodbUri = 'mongodb://catian:Tca89315@host:port/db';//Mlab
 //var mongodbUri = 'mongodb://localhost/news';//Local
