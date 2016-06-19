@@ -28,7 +28,7 @@ var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               };       
  
-var mongodbUri = 'mongodb://catian:Tca89315@host:port/db';//Mlab
+var mongodbUri = 'http://mongodb://catian:Tca89315@ds021462.mlab.com:21462/heroku_q0bdbw84';//Mlab
 //var mongodbUri = 'mongodb://localhost/news';//Local
  
 mongoose.connect(mongodbUri, options);
