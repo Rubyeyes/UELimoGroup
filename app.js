@@ -27,7 +27,7 @@ var app = express();
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               }; 
-var mongodburi = ENV["MONGODB_URI"];
+var mongodburi = process.env.MONGODB_URI;
 //var mongodbUri = 'mongodb://localhost/news';//Local
 mongoose.connect(mongodburi, options);
 mongoose.connection.on('error', function(err) {
