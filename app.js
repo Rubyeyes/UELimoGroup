@@ -24,7 +24,13 @@ var routes = require('./routes/index');
 var app = express();
 
 // connect mongodb
-mongoose.connect('mongodb://localhost/news');
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };       
+ 
+var mongodbUri = 'mongodb://user:pass@host:port/db';//Mlab
+//var mongodbUri = 'mongodb://localhost/news';//Local
+ 
+mongoose.connect(mongodbUri, options);
 mongoose.connection.on('error', function(err) {
   console.error('MongoDB connection error: ' + err);
   process.exit(-1);
