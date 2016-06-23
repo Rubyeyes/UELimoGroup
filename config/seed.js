@@ -21,7 +21,5 @@ User.remove({}, function(err) {
 		admin.save(function(err) {
 			if(err){return next(err);}
 		});
-
-		console.log('success');
 	}
 });

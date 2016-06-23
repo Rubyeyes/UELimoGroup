@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var http = require('http');
 
 // import environment configuration
 var config = require('./config/environment/development');
@@ -23,20 +24,19 @@ var routes = require('./routes/index');
 
 var app = express();
 
-// connect mongodb
-// var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
-//                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
-//               }; 
-var mongodburi = process.env.MONGODB_URI;
-//var mongodburi = 'mongodb://localhost/news';//Local
-mongoose.connect(mongodburi);
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: ' + err);
-  process.exit(-1);
+// connect mongolab
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
+              }; 
+var MONGOLAB_WHITE_URI = 'mongodb://heroku_6kw0f9gg:shae21qih8fi16s0i3j364jbon@ds023074.mlab.com:23074/heroku_6kw0f9gg';
+mongoose.connect(MONGOLAB_WHITE_URI, function(err) {
+  if (err) console.log(err);
 });
 
 // Populate databases with sample data
-if (config.seedDB) { require('./config/seed'); }
+if (config.seedDB) { 
+  require('./config/seed'); 
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

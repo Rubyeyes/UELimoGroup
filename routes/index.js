@@ -26,6 +26,7 @@ router.post('/api/posts', auth, function(req, res, next) {
 
 /* GET posts page. */
 router.get('/api/posts', function(req, res, next) {
+	// console.log("abc")
 	Post.find(function(err, posts) {
 		if(err){return next(err);}
 		res.json(posts);
