@@ -1,5 +1,5 @@
 angular.module('FrEExApp')
-	.controller('MainCtrl',  ['$scope', 'Posts', 'Auth', function($scope, Posts, Auth) {
+	.controller('MainCtrl',  ['$scope', 'Posts', 'Email', 'Auth', function($scope, Posts, Email, Auth) {
 			$scope.test = 'Hello World!';
 
 			$scope.posts = Posts.posts;
@@ -43,4 +43,14 @@ angular.module('FrEExApp')
 				$scope.posts.splice($index, 1);
 				$scope.disablePostEdit($index);
 			};
+
+			//Send email
+			$scope.sendEmail = function() {
+				Email.sendEmail({	
+					subject: $scope.subject,
+					content: $scope.content
+				});	
+				$scope.subject = '';
+				$scope.content = '';
+			}
 		}])

@@ -7,11 +7,38 @@ var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 
+//middleware to authenticate jwt tokens
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
+
+/* ========================================================== 
+email api
+============================================================ */
+router.post('/api/email', auth, function(req, res, next) {
+	var helper = require('sendgrid').mail
+	from_email = new helper.Email(process.env.WEB_ADDRESS)
+	to_email = new helper.Email("catian315@gmail.com")
+	subject = req.body.subject
+	content = new helper.Content("text/plain", req.body.content)
+	mail = new helper.Mail(from_email, subject, to_email, content)
+
+	var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+	var requestBody = mail.toJSON()
+	var request = sg.emptyRequest()
+	request.method = 'POST'
+	request.path = '/v3/mail/send'
+	request.body = requestBody
+	sg.API(request, function (response) {
+		// console.log(response.statusCode)
+		// console.log(response.body)
+		// console.log(response.headers)
+		if(response.body) {return next(response.body)}
+	})
+
+});
+
 /* ========================================================== 
 post api
 ============================================================ */
-//middleware to authenticate jwt tokens
-var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 /* Add a post. */
 router.post('/api/posts', auth, function(req, res, next) {
@@ -26,7 +53,6 @@ router.post('/api/posts', auth, function(req, res, next) {
 
 /* GET posts page. */
 router.get('/api/posts', function(req, res, next) {
-	// console.log("abc")
 	Post.find(function(err, posts) {
 		if(err){return next(err);}
 		res.json(posts);
@@ -134,7 +160,6 @@ router.param('comment', function(req, res, next, id) {
 
 /* Upvote the comment */
 router.get('/api/posts/:post/comments/:comment/upvote', auth, function(req, res) {
-	console.log(res.comment);
 	res.comment.upvote(function(err, comment) {
 		if(err) {return next(err);}
 
