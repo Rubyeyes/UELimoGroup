@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var Comment = mongoose.model('Comment');
+
 //create a new schema
 var PostSchema = new mongoose.Schema({
 	title: String,

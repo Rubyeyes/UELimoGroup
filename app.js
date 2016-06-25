@@ -11,6 +11,9 @@ var http = require('http');
 // import environment configuration
 var config = require('./config/environment/development');
 
+// import environment variable
+require('./config/environment/envVariable');
+
 // add models
 require('./models/Comments');
 require('./models/Posts');
@@ -28,7 +31,8 @@ var app = express();
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               }; 
-var MONGOLAB_WHITE_URI = 'mongodb://heroku_6kw0f9gg:shae21qih8fi16s0i3j364jbon@ds023074.mlab.com:23074/heroku_6kw0f9gg';
+// var MONGOLAB_WHITE_URI = 'mongodb://heroku_6kw0f9gg:shae21qih8fi16s0i3j364jbon@ds023074.mlab.com:23074/heroku_6kw0f9gg';
+var MONGOLAB_WHITE_URI = process.env.MONGOLAB_WHITE_URI;
 mongoose.connect(MONGOLAB_WHITE_URI, function(err) {
   if (err) console.log(err);
 });
