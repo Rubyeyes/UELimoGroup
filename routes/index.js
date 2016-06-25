@@ -71,10 +71,13 @@ router.put('/api/posts/:post/edit', function(req, res) {
 
 /* Delete a post */
 router.delete('/api/posts/:post/delete', function(req, res) {
-	console.log(res.post);
-	Post.remove({_id: res.post._id}, function(err) {
-		if(err) {return next(err);}
+	Post.findOne({_id: res.post._id}, function(err, post) {
+		if(err) {return next(err)};
+		post.remove();
 	})
+	// Post.remove({_id: res.post._id}, function(err) {
+	// 	if(err) {return next(err);}
+	// })
 })
 
 /* Upvote the post */

@@ -12,8 +12,8 @@ var http = require('http');
 var config = require('./config/environment/development');
 
 // add models
-require('./models/Posts');
 require('./models/Comments');
+require('./models/Posts');
 require('./models/User');
 
 // add passport configuration
