@@ -1,5 +1,5 @@
 //MongoLab Connection URI
-process.env['MONGOLAB_URI']='mongodb://heroku_hndzs0lf:n26ufg7hcfn5qepmhcdq9nulsb@ds023714.mlab.com:23714/heroku_hndzs0lf';
+process.env['MONGODB_URI']='mongodb://heroku_hndzs0lf:n26ufg7hcfn5qepmhcdq9nulsb@ds023714.mlab.com:23714/heroku_hndzs0lf';
 
 //Sandgrid Email Setup
 process.env['SANDGRID_USERNAME']='app52741038@heroku.com';

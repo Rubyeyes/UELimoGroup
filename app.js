@@ -32,7 +32,7 @@ var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               }; 
 
-mongoose.connect(MONGOLAB_URI, function(err) {
+mongoose.connect(MONGODB_URI, function(err) {
   if (err) console.log(err);
 });
 
