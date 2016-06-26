@@ -31,7 +31,11 @@ router.post('/api/email', auth, function(req, res, next) {
 		// console.log(response.statusCode)
 		// console.log(response.body)
 		// console.log(response.headers)
-		if(response.body) {return next(response.body)}
+		if(response.body) {
+			console.log(response.body);
+			return next(response.body);
+		}
+		res.json(response.statusCode);
 	})
 
 });
@@ -201,10 +205,9 @@ router.post('/api/register', function(req, res, next) {
 	var user = new User();
 
 	user.username = req.body.username;
-
 	user.setPassword(req.body.password);
-
 	user.email = req.body.email;
+
 
 	user.save(function(err) {
 		if(err){return next(err);}
@@ -232,6 +235,7 @@ router.post('/api/login', function(req, res, next) {
 
 /* Get user info*/
 router.get('/api/users/:user', function(req, res, next) {
+	console.log(res.user);
 	res.json(res.user);
 });
 
