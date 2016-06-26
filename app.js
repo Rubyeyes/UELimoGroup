@@ -32,6 +32,7 @@ var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
               }; 
 
+var MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, function(err) {
   if (err) console.log(err);
 });
