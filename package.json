@@ -31,7 +31,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rubyeyes/mytemplate.git"
+    "url": "git+https://github.com/Rubyeyes/UELimoGroup.git"
   },
   "keywords": [
     "nodejs",
@@ -40,7 +40,7 @@
   "author": "Changan Tian",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rubyeyes/mytemplate/issues"
+    "url": "https://github.com/Rubyeyes/UELimoGroup/issues"
   },
-  "homepage": "https://github.com/Rubyeyes/mytemplate#readme"
+  "homepage": "https://github.com/Rubyeyes/UELimoGroup#readme"
 }
