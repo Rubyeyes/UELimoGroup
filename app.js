@@ -17,6 +17,9 @@ require('./config/environment/envVariable');
 // add models
 require('./models/Comments');
 require('./models/Posts');
+require('./models/Info');
+require('./models/Fleets');
+require('./models/Services');
 require('./models/Orders');
 require('./models/User');
 
