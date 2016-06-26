@@ -32,7 +32,6 @@ router.post('/api/email', auth, function(req, res, next) {
 		// console.log(response.body)
 		// console.log(response.headers)
 		if(response.body) {
-			console.log(response.body);
 			return next(response.body);
 		}
 		res.json(response.statusCode);
@@ -235,7 +234,6 @@ router.post('/api/login', function(req, res, next) {
 
 /* Get user info*/
 router.get('/api/users/:user', function(req, res, next) {
-	console.log(res.user);
 	res.json(res.user);
 });
 

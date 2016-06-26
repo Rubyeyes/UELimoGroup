@@ -9,6 +9,7 @@ UserSchema = new mongoose.Schema({
 	role: String,
 	hash: String,
 	salt: String,
+	orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}]
 });
 
 //setup method

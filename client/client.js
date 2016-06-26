@@ -50,7 +50,12 @@ angular.module('MyApp', [
 					views: {
 						"navsecond": {
 							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
+							controller: 'NavSecondCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}
 						},
 						"": {
 							templateUrl: '/account/profile/profile.html',
@@ -59,81 +64,112 @@ angular.module('MyApp', [
 								user: ['Auth', function(Auth) {
 									return Auth.getUserInfo();
 								}]
-							}	
+							}		
 						}
-					}
-				})
-				.state('career', {
-					url: '/career',
-					views: {
-						"navsecond": {
-							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
-						},
-						"": {
-							templateUrl: '/account/career/career.html'	
-						}
-					}
+					},
+				    onEnter: ['$state', 'Auth',function($state, Auth){
+				    	Auth.getUserInfo().then(function(response) {
+				       		if (response.role === 'admin') {
+				       			$state.transitionTo('admin_setting');	
+				       		}
+				    	})
+				    }]
 				})
 				.state('dashboard', {
 					url: '/dashboard',
 					views: {
 						"navsecond": {
 							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
+							controller: 'NavSecondCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}	
 						},
 						"": {
 							templateUrl: '/account/dashboard/dashboard.html'	
 						}
-					}
+					},
+				    onEnter: ['$state', 'Auth',function($state, Auth){
+				    	Auth.getUserInfo().then(function(response) {
+				       		if (response.role === 'admin') {
+				       			$state.transitionTo('admin_setting');	
+				       		}
+				    	})
+				    }]
 				})
-				.state('data', {
-					url: '/data',
+				.state('history', {
+					url: '/history',
 					views: {
 						"navsecond": {
 							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
+							controller: 'NavSecondCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}	
 						},
 						"": {
-							templateUrl: '/account/data/data.html'	
+							templateUrl: '/account/history/history.html',
 						}
-					}
+					},
+				    onEnter: ['$state', 'Auth',function($state, Auth){
+				    	Auth.getUserInfo().then(function(response) {
+				       		if (response.role === 'admin') {
+				       			$state.transitionTo('admin_setting');	
+				       		}
+				    	})
+				    }]
 				})
-				.state('inbox', {
-					url: '/inbox',
+				.state('admin_setting', {
+					url: '/admin_setting',
 					views: {
 						"navsecond": {
 							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
+							controller: 'NavSecondCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}	
 						},
 						"": {
-							templateUrl: '/account/inbox/inbox.html'	
-						}
-					}
+							templateUrl: '/account/admin_setting/admin_setting.html'	
+						},
+					},
+				    onEnter: ['$state', 'Auth',function($state, Auth){
+				    	Auth.getUserInfo().then(function(response) {
+				       		if (response.role === 'user') {
+				       			$state.transitionTo('profile');	
+				       		}
+				    	})
+				    }]
 				})
-				.state('missions', {
-					url: '/missions',
+				.state('admin_data', {
+					url: '/admin_data',
 					views: {
 						"navsecond": {
 							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
+							controller: 'NavSecondCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}	
 						},
 						"": {
-							templateUrl: '/account/missions/missions.html'	
+							templateUrl: '/account/admin_data/admin_data.html'	
 						}
-					}
-				})
-				.state('setting', {
-					url: '/setting',
-					views: {
-						"navsecond": {
-							templateUrl: 'components/navbar/navbarSecond.html',
-							controller: 'NavCtrl',
-						},
-						"": {
-							templateUrl: '/account/setting/setting.html'	
-						}
-					}
+					},
+				    onEnter: ['$state', 'Auth',function($state, Auth){
+				    	Auth.getUserInfo().then(function(response) {
+				       		if (response.role === 'user') {
+				       			$state.transitionTo('profile');	
+				       		}
+				    	})
+				    }]
 				});
 
 			$urlRouterProvider.otherwise('home');

@@ -5,7 +5,6 @@ angular.module('MyApp')
 		$scope.isLoggedIn = Auth.isLoggedIn;
 		$scope.currentUser = Auth.currentUser;
 		$scope.isCollapsed = true;
-		$scope.isSecondCollapsed = true;
 
 		$scope.logOut = function() {
 			Auth.logOut()
@@ -14,9 +13,6 @@ angular.module('MyApp')
 
 		$scope.collaps = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
-		};
-		$scope.secondCollaps = function() {
-			$scope.isSecondCollapsed = !$scope.isSecondCollapsed;
 		};
 
 		$scope.isActive = function(route) {     

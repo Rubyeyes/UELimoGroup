@@ -17,6 +17,7 @@ require('./config/environment/envVariable');
 // add models
 require('./models/Comments');
 require('./models/Posts');
+require('./models/Orders');
 require('./models/User');
 
 // add passport configuration

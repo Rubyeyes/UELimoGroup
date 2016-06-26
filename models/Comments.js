@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 //create a new schema
 var CommentSchema = new mongoose.Schema({

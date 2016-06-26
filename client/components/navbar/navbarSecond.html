@@ -11,13 +11,11 @@
     <div uib-collapse="isSecondCollapsed" class="navbar-collapse collapse" id="navbar-main">
 
       <ul class="nav nav-pills navbar-left ">
-        <li ng-class="{active: isActive('/dashboard')}"><a class="nav-second-a" href="/dashboard">Dashboard</a></li>
-        <li ng-class="{active: isActive('/missions')}"><a class="nav-second-a" href="/missions">Missions</a></li>
-        <li ng-class="{active: isActive('/inbox')}"><a class="nav-second-a" href="/inbox">Inbox</a></li>
-        <li ng-class="{active: isActive('/profile')}"><a class="nav-second-a" href="/profile">Profile</a></li>
-        <li ng-class="{active: isActive('/setting')}"><a class="nav-second-a" href="/setting">Setting</a></li>
-        <li ng-class="{active: isActive('/career')}"><a class="nav-second-a" href="/career">Career</a></li>
-        <li ng-class="{active: isActive('/data')}"><a class="nav-second-a" href="/data">Data</a></li>
+        <li ng-class="{active: isActive('/dashboard')}" ng-hide="isAdmin()"><a class="nav-second-a" href="/dashboard">Dashboard</a></li>
+        <li ng-class="{active: isActive('/profile')}" ng-hide="isAdmin()"><a class="nav-second-a" href="/profile">Profile</a></li>
+        <li ng-class="{active: isActive('/history')}" ng-hide="isAdmin()"><a class="nav-second-a" href="/history">History</a></li>
+        <li ng-class="{active: isActive('/admin_setting')}" ng-show="isAdmin()"><a class="nav-second-a" href="/admin_setting">Admin Setting</a></li>
+        <li ng-class="{active: isActive('/admin_data')}" ng-show="isAdmin()"><a class="nav-second-a" href="/admin_data">Admin Data</a></li>
       </ul>
     </div>
   </div>
