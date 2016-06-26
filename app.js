@@ -28,6 +28,7 @@ require('./config/passport');
 
 //add routes
 var routes = require('./routes/index');
+var routes = require('./routes/users');
 
 var app = express();
 
