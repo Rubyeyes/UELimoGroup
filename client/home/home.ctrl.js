@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.controller('MainCtrl',  ['$scope', 'Posts', 'Email', 'Auth', function($scope, Posts, Email, Auth) {
 			$scope.test = 'Hello World!';
 

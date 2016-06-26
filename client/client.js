@@ -1,4 +1,4 @@
-angular.module('FrEExApp', [
+angular.module('MyApp', [
 			'ui.router',
 			'ui.bootstrap',
 			'validation.match'

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.controller('NavCtrl', ['$scope', '$location', '$state', 'Auth', function($scope, $location, $state, Auth) {
 		$scope.isLoggedIn = Auth.isLoggedIn;
 		$scope.currentUser = Auth.currentUser;

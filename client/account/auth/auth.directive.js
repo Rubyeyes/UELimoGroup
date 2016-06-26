@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.directive('usersnameemail', function($q, $timeout, Auth) {
 		return {
 			require: 'ngModel',

@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.controller('AuthCtrl', ['$scope', '$state', 'Auth', function($scope, $state, Auth) {
 		$scope.user = {};
 		$scope.submitted = false;

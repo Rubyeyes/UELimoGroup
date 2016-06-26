@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.factory('Email', ['$http', 'Auth', function($http, Auth){
 			var email = {};
 

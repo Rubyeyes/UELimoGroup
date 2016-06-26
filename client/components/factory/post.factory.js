@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.factory('Posts', ['$http', 'Auth',  function($http, Auth){
 			var o = {
 				posts:[]

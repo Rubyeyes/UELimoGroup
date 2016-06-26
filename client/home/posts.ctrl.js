@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.controller('PostsCtrl', ['$scope', 'Posts', 'post', 'Auth', function($scope, Posts, post, Auth){
 			$scope.post = post;
 

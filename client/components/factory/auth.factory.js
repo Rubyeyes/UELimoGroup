@@ -1,4 +1,4 @@
-angular.module('FrEExApp')
+angular.module('MyApp')
 	.factory('Auth', ['$http', '$window', function($http, $window) {
 			var auth = {};
 
