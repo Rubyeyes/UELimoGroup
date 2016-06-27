@@ -142,8 +142,8 @@ angular.module('MyApp', [
 								infoPromise: ['Info', function(Info) {
 									return Info.getAll();
 								}],
-								fleetPromise: ['Fleets', function(Fleets) {
-									return Fleets.getAll();
+								fleetPromise: ['Fleet', function(Fleet) {
+									return Fleet.getAll();
 								}]
 							}		
 						},

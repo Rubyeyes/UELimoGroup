@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleets', function($scope, Info, Fleets) {
+	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleet', function($scope, Info, Fleet) {
 		// Basic Info
 		$scope.information = Info.info;
 		$scope.updateInfo = {};
@@ -20,5 +20,5 @@ angular.module('MyApp')
 		};
 
 		// Fleet Info
-		$scope.fleets = Fleets.fleets;
+		$scope.fleets = Fleet.fleets;
 	}])

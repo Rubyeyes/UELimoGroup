@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.factory('Fleets', ['$http', 'Auth',  function($http, Auth){
+	.factory('Fleet', ['$http', 'Auth',  function($http, Auth){
 			var o = {
 				fleets:[]
 			};
