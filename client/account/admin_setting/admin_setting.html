@@ -1,10 +1,30 @@
-<p> Company: {{info.company_info}} </p>
-<p> Phone Number: {{info.phone_number}} </p>
-<p> Address: {{info.address}} </p>
-<p> Email: {{info.email}} </p>
-<p> Wechat: {{info.wechat}} </p>
-<p> QQ: {{info.qq}} </p>
-<p> Weibo: {{info.weibo}} </p>
-<p> Facebook: {{info.facebook}} </p>
-<p> Google+: {{info.google_plus}} </p>
-<p> Instagram: {{info.instagram}} </p>
+<h2>Basic Info</h2>
+
+<div ng-hide="editing">
+	<button ng-click="enableInfoEdit()">Edit</button>
+	<p> Company: {{information.company_info}} </p>
+	<p> Phone Number: {{information.phone_number}} </p>
+	<p> Address: {{information.address}} </p>
+	<p> Email: {{information.email}} </p>
+	<p> Wechat: {{information.wechat}} </p>
+	<p> QQ: {{information.qq}} </p>
+	<p> Weibo: {{information.weibo}} </p>
+	<p> Facebook: {{information.facebook}} </p>
+	<p> Google+: {{information.google_plus}} </p>
+	<p> Instagram: {{information.instagram}} </p>
+</div>
+<div ng-show="editing">
+	<p> Company: <input ng-model="updateInfo.company_info"> </p>
+	<p> Phone Number: <input ng-model="updateInfo.phone_number"> </p>
+	<p> Address: <input ng-model="updateInfo.address"> </p>
+	<p> Email: <input ng-model="updateInfo.email"> </p>
+	<p> Wechat: <input ng-model="updateInfo.wechat"> </p>
+	<p> QQ: <input ng-model="updateInfo.qq"> </p>
+	<p> Weibo: <input ng-model="updateInfo.weibo"> </p>
+	<p> Facebook: <input ng-model="updateInfo.facebook"> </p>
+	<p> Google+: <input ng-model="updateInfo.google_plus"> </p>
+	<p> Instagram: <input ng-model="updateInfo.instagram"> </p>
+
+	<button ng-click="saveInfo(updateInfo)">Save</button>
+	<button ng-click="disableInfoEdit()">Cancel</button>
+</div>

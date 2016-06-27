@@ -16,7 +16,13 @@ router.get('/', function(req, res, next) {
 	Info.findOne({'__v': 0}, function(err, info) {
 		if(err){return next(err);}
 		res.json(info);
-	})
+	});
+});
+
+router.put('/', function(req, res) {
+	var oldInfo = Info.update({'__v': 0}, req.body, function(err) {
+		if(err) {return next(err);}
+	});
 });
 
 module.exports = router;

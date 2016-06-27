@@ -139,7 +139,7 @@ angular.module('MyApp', [
 							templateUrl: '/account/admin_setting/admin_setting.html',
 							controller: 'AdminSettingCtrl',
 							resolve: {
-								info: ['Info', function(Info) {
+								infoPromise: ['Info', function(Info) {
 									return Info.getAll();
 								}]
 							}		
