@@ -27,7 +27,7 @@ router.param('user', function(req, res, next, id) {
 });
 
 /* User register */
-router.post('/api/register', function(req, res, next) {
+router.post('/register', function(req, res, next) {
 	if(!req.body.username || !req.body.password || !req.body.email) {
 		return res.status(400).json({message: 'Please fill out all fields'});
 	}
@@ -47,7 +47,7 @@ router.post('/api/register', function(req, res, next) {
 });
 
 /* User login */
-router.post('/api/login', function(req, res, next) {	
+router.post('/login', function(req, res, next) {	
   if(!req.body.email || !req.body.password){
     return res.status(400).json({message: 'Please fill out all fields'});
   }; 
@@ -64,11 +64,11 @@ router.post('/api/login', function(req, res, next) {
 });
 
 /* Get user info*/
-router.get('/api/users/:user', function(req, res, next) {
+router.get('/:user', function(req, res, next) {
 	res.json(res.user);
 });
 
-router.get('/api/usersnameemail', function(req, res) {
+router.get('/usersnameemail', function(req, res) {
 	User.find({}, function(err, users) {
 		var usersNameEmail = [];
 		var i = 0;

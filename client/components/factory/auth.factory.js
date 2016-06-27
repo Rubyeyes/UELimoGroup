@@ -3,11 +3,11 @@ angular.module('MyApp')
 			var auth = {};
 
 			auth.saveToken = function(token) {
-				$window.localStorage['flapper-news-token'] = token;
+				$window.localStorage['ma-fancy-token'] = token;
 			};
 
 			auth.getToken = function() {
-				return $window.localStorage['flapper-news-token'];
+				return $window.localStorage['ma-fancy-token'];
 			};
 
 			auth.isLoggedIn = function() {
@@ -23,13 +23,13 @@ angular.module('MyApp')
 			};
 
 			auth.register = function(user) {
-				return $http.post('/api/register', user).then(function(response) {
+				return $http.post('/api/users/register', user).then(function(response) {
 					auth.saveToken(response.data.token);
 				});
 			};
 
 			auth.logIn = function(user) {
-				return $http.post('/api/login', user).then(function(response) {
+				return $http.post('/api/users/login', user).then(function(response) {
 					auth.saveToken(response.data.token);
 				}, function(err) {
 					return err.data;
@@ -37,7 +37,7 @@ angular.module('MyApp')
 			};
 
 			auth.logOut = function() {
-				$window.localStorage.removeItem('flapper-news-token');
+				$window.localStorage.removeItem('ma-fancy-token');
 			};
 
 			auth.currentUser = function() {
@@ -66,7 +66,7 @@ angular.module('MyApp')
 			};
 
 			auth.getUsersNameEmail = function() {
-				return $http.get('/api/usersnameemail').then(function(response) {
+				return $http.get('/api/users/usersnameemail').then(function(response) {
 					return response.data;
 				})
 			};
