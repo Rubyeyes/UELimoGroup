@@ -1,7 +1,7 @@
 angular.module('MyApp')
-	.controller('AdminSettingCtrl', ['$scope', 'Info', function($scope, Info) {
+	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleets', function($scope, Info, Fleets) {
+		// Basic Info
 		$scope.information = Info.info;
-
 		$scope.updateInfo = {};
 		$scope.editing = false;
 
@@ -18,4 +18,7 @@ angular.module('MyApp')
 			Info.update(updateInfo);
 			$scope.disableInfoEdit();
 		};
+
+		// Fleet Info
+		$scope.fleets = Fleets.fleets;
 	}])

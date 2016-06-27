@@ -28,3 +28,12 @@
 	<button ng-click="saveInfo(updateInfo)">Save</button>
 	<button ng-click="disableInfoEdit()">Cancel</button>
 </div>
+
+
+<h2>Fleets</h2>
+<div ng-repeat="fleet in fleets | orderBy: 'brand'" >
+	<p> Brand: {{fleet.brand}} </p>
+	<p> Type: {{fleet.type}} </p>
+	<p> Price: {{fleet.price}}/hour </p>
+	<p> Description: {{fleet.description}} </p>
+</div>

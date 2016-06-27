@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
+var Info = mongoose.model('Info');
+var Fleet = mongoose.model('Fleet');
 
 User.remove({}, function(err) {
 	if (err) {
@@ -25,3 +27,41 @@ User.remove({}, function(err) {
 		});
 	}
 });
+
+Info.remove({}, function(err) {
+	if (err) {
+		console.log(err);
+	} else {
+		var info = new Info();	
+	    info.instagram = "instagram12345678";
+	    info.google_plus = "google12345678";
+	    info.facebook = "facebook12345678";
+	    info.weibo = "weibo12345678";
+	    info.qq = "qq12345678";
+	    info.wechat = "12345678abc";
+	    info.email = "test@example.com";
+	    info.address = "123 abc st. city, ca 12345";
+	    info.phone_number = 1234567890;
+	    info.company_info = "This is a test info";
+	    info.company_name = "UE Limo Group";
+	    info.save(function(err) {
+	    	if(err){return next(err);}
+	    })
+	}
+});
+
+Fleet.remove({}, function(err) {
+	if(err) {
+		cosole.log(err);
+	} else {
+		var fleet = new Fleet();		
+		fleet.brand = "Toyota" ;
+		fleet.type = "Camry" ;
+		fleet.description = "Nice fancy car" ;
+		fleet.price = 12;
+		fleet.save(function(err) {
+			if(err) {return next(err);}
+		}) 
+
+	}
+})
