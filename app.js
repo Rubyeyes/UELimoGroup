@@ -29,6 +29,7 @@ require('./config/passport');
 //add routes
 var routes = require('./routes/index');
 var routes_users = require('./routes/users');
+var routes_info = require('./routes/info');
 
 var app = express();
 
@@ -65,6 +66,7 @@ app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/api/users', routes_users);
+app.use('/api/info', routes_info);
 //redirect other url to angularjs
 app.use(function(req, res) {
   // Use res.sendfile, as it streams instead of reading the file into memory.

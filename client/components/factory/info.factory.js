@@ -1,7 +1,7 @@
 angular.module('MyApp')
 	.factory('Info', ['$http', 'Auth',  function($http, Auth){
 			var o = {
-				info:[]
+				info: {}
 			};
 
 			//get all info
@@ -9,7 +9,7 @@ angular.module('MyApp')
 				return $http.get('/api/info', {
 					headers: {Authorization: 'Bearer '+ Auth.getToken()}
 				}).then(function(response) {
-					angular.copy(response.data, o.info);
+					return response.data;
 				});
 			};
 

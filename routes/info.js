@@ -13,7 +13,7 @@ Info API
 ============================================================ */
 /* GET info. */
 router.get('/', function(req, res, next) {
-	Info.find(function(err, info) {
+	Info.findOne({'__v': 0}, function(err, info) {
 		if(err){return next(err);}
 		res.json(info);
 	})
