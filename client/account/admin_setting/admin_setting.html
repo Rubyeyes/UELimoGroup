@@ -1,6 +1,6 @@
 <h2>Basic Info</h2>
 
-<div ng-hide="editing">
+<div ng-hide="editingInfo">
 	<button ng-click="enableInfoEdit()">Edit</button>
 	<p> Company: {{information.company_info}} </p>
 	<p> Phone Number: {{information.phone_number}} </p>
@@ -13,7 +13,7 @@
 	<p> Google+: {{information.google_plus}} </p>
 	<p> Instagram: {{information.instagram}} </p>
 </div>
-<div ng-show="editing">
+<div ng-show="editingInfo">
 	<p> Company: <input ng-model="updateInfo.company_info"> </p>
 	<p> Phone Number: <input ng-model="updateInfo.phone_number"> </p>
 	<p> Address: <input ng-model="updateInfo.address"> </p>
@@ -31,9 +31,61 @@
 
 
 <h2>Fleets</h2>
-<div ng-repeat="fleet in fleets | orderBy: 'brand'" >
-	<p> Brand: {{fleet.brand}} </p>
-	<p> Type: {{fleet.type}} </p>
-	<p> Price: {{fleet.price}}/hour </p>
-	<p> Description: {{fleet.description}} </p>
-</div>
+
+<button ng-click="enableFleetAdd()" ng-hide="addingFleet">Add a New Fleet</button>
+
+<form ng-submit="addFleet()" ng-show="addingFleet">
+	<h3>Add a new fleet</h3>
+	<div class="form-group">
+		<input type="text" ng-model="brand" placeholder="Brand">
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="type" placeholder="Type">
+	</div>
+	<div class="form-group">
+		<input type="number" ng-model="price" placeholder="Price/Hour">
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="description" placeholder="Description">
+	</div>
+	
+	<button type="submit" class="btn btn-primary" >Confirm</button>
+	<button ng-click="diableFleetAdd()" class="btn btn-primary" >Cancel</button>
+</form>
+
+<table class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Brand</th>
+			<th>Type</th>
+			<th>Price/hour</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="fleet in fleets | orderBy: 'brand'">
+
+			<td ng-hide="editingFleet[$index]">{{fleet.brand}}</td>
+			<td ng-hide="editingFleet[$index]">{{fleet.type}}</td>
+			<td ng-hide="editingFleet[$index]">{{fleet.price}}</td>
+			<td ng-hide="editingFleet[$index]">{{fleet.description}}</td>
+			<td ng-hide="editingFleet[$index]">
+				<button ng-click="enableFleetEdit(fleet, $index)">Edit</button>
+			</td>
+
+			<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.brand"></td>
+			<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.type"></td>
+			<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price"></td>
+			<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.description"></td>
+			<td ng-show="editingFleet[$index]">
+				<button ng-click="saveFleet(fleet, updateFleet, $index)">Save</button>
+				<button ng-click="disableFleetEdit($index)">Cancel</button>
+				<button ng-click="removeFleet(fleet, $index)">Remove</button>
+			</td>
+
+		</tr>
+	</tbody>
+</table>
+
+
+

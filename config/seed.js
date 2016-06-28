@@ -63,5 +63,13 @@ Fleet.remove({}, function(err) {
 			if(err) {return next(err);}
 		}) 
 
+		var fleet2 = new Fleet();		
+		fleet2.brand = "Honda" ;
+		fleet2.type = "Accord" ;
+		fleet2.description = "Cheap car" ;
+		fleet2.price = 9;
+		fleet2.save(function(err) {
+			if(err) {return next(err);}
+		}) 
 	}
 })
