@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Info = mongoose.model('Info');
 var Fleet = mongoose.model('Fleet');
+var Service = mongoose.model('Service');
 
 User.remove({}, function(err) {
 	if (err) {
@@ -52,7 +53,7 @@ Info.remove({}, function(err) {
 
 Fleet.remove({}, function(err) {
 	if(err) {
-		cosole.log(err);
+		console.log(err);
 	} else {
 		var fleet = new Fleet();		
 		fleet.brand = "Toyota" ;
@@ -71,5 +72,19 @@ Fleet.remove({}, function(err) {
 		fleet2.save(function(err) {
 			if(err) {return next(err);}
 		}) 
+	}
+});
+
+Service.remove({}, function(err) {
+	if(err) {
+		console.log(err);
+	} else {
+		var service = new Service();		
+		service.name = "Transfer to airport";
+		service.description = "Help to pickup and drop off to LAX";
+		service.price = 200;
+		service.save(function(err) {
+			if(err) {return next(err);}
+		})
 	}
 })

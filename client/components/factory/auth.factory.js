@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.factory('Auth', ['$http', '$window', function($http, $window) {
+	.factory('Auth', ['$http', '$window', '$q', function($http, $window, $q) {
 			var auth = {};
 
 			auth.saveToken = function(token) {
@@ -46,6 +46,17 @@ angular.module('MyApp')
 				if(token) {
 					var payload = JSON.parse($window.atob(token.split('.')[1]));
 					return payload.username;
+				} else {
+					return false;
+				}
+			};
+
+			auth.currentRole = function() {
+				var token = auth.getToken();
+
+				if(token) {
+					var payload = JSON.parse($window.atob(token.split('.')[1]));
+					return payload.role;
 				} else {
 					return false;
 				}

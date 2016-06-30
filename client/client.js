@@ -1,7 +1,8 @@
 angular.module('MyApp', [
 			'ui.router',
 			'ui.bootstrap',
-			'validation.match'
+			'validation.match',
+			'ngFileUpload'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
 			$stateProvider
@@ -144,6 +145,9 @@ angular.module('MyApp', [
 								}],
 								fleetPromise: ['Fleet', function(Fleet) {
 									return Fleet.getAll();
+								}],
+								servicePromise: ['Service', function(Service) {
+									return Service.getAll();
 								}]
 							}		
 						},

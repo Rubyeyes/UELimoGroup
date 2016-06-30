@@ -1,0 +1,58 @@
+<div class="page-header">
+	<h1>Flapper News</h1>
+</div>
+<div ng-repeat="post in posts | orderBy: '-upvotes'" >
+	<div ng-hide="editing[$index]">
+		<h2 ng-show="post.link"> <a href="{{post.link}}">{{post.title}}</a></h2>
+		<h2 ng-hide="post.link">{{post.title}}</h2>
+		<button ng-click="enablePostEdit(post, $index)">Edit</button>
+	</div>
+	<div ng-show="editing[$index]">
+		<input ng-model="updatePost.title">
+		<input ng-model="updatePost.link">
+		<button ng-click="savePost(post, updatePost, $index)">Save</button>
+		or
+		<button ng-click="disablePostEdit($index)">Cancel</button>
+		or
+		<button ng-click="removePost(post, $index)">Remove</button>
+	</div>
+	<span ng-show="post.author">
+	  posted by <a>{{post.author}}</a>
+	</span>
+	 <p>
+	 	upvotes: {{post.upvotes}}
+		<button ng-click="increaseUpvotes(post)">+</button>
+		<button ng-click="decreaseUpvotes(post)">-</button>
+	 </p>
+	 <p>
+	 	<span><a href="posts/{{post._id}}">Comments</a></span>
+	 </p>
+	 <hr>
+</div>
+<form ng-submit="addPost()" ng-show="isLoggedIn()" style="margin-top:30px">
+	<h3>Add a new post</h3>
+	<div class="form-group">
+		<input type="text" ng-model="title" placeholder="Title">
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="link" placeholder="Link">
+	</div>
+	
+	<button type="submit" class="btn btn-primary" >Post</button>
+</form>
+
+<form ng-submit='sendEmail(subject, content)' ng-show="isLoggedIn()">
+	<h3>Write your email</h3>
+	<div class="form-group">
+		<input type="text" ng-model="subject" placeholder="Subject">
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="content" placeholder="Content">
+	</div>
+
+	<button type="submit" class="btn btn-primary">Send Email</button>
+</form>
+
+<div ng-hide="isLoggedIn()">
+  <h3>You need to <a href="/login">Log In</a> or <a href="/register">Register</a> before you can add a post.</h3>
+</div>

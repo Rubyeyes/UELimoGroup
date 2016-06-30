@@ -6,6 +6,10 @@ angular.module('MyApp')
 		$scope.currentUser = Auth.currentUser;
 		$scope.isCollapsed = true;
 
+		$scope.isAdmin = function() {
+			return Auth.currentRole() === 'admin';
+		}
+
 		$scope.logOut = function() {
 			Auth.logOut()
 			$state.go('home');
