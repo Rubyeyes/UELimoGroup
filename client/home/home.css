@@ -4,9 +4,17 @@
 
 .jumbotron > h1 {
 	color: white;
+	font-family: 'Pattaya', sans-serif;
 }
 
 .container-home {
 	position: relative;
 	height: 87vh;
+}
+
+.btn-index {
+	background-color: rgba(218, 199, 98, 1);
+	border-color: rgba(218, 199, 98, 1);
+	margin-right: 10px;
+	border-radius: 2px;
 }
