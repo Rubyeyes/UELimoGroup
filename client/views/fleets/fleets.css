@@ -1,0 +1,19 @@
+.container-fleet {
+	padding: 0px;
+	margin-bottom: 30px;
+}
+
+.thumbnail > img {
+	height: 305px;
+}
+
+.fleet-head {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.btn-fleet {
+	width: 45%;
+	margin-right: 10px;
+}

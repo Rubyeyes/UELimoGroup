@@ -23,7 +23,7 @@ router.post('/', auth, function(req, res, next) {
 });
 
 /* GET services page. */
-router.get('/', auth, function(req, res, next) {
+router.get('/', function(req, res, next) {
 	Service.find(function(err, services) {
 		if(err){return next(err);}
 		res.json(services);
@@ -44,7 +44,7 @@ router.param('service', function(req, res, next, id){
 });
 
 /* Get one service*/
-router.get('/:service', auth, function(req, res){
+router.get('/:service', function(req, res){
 	res.service.populate('order', function(err, service) {
 		if(err) {return next(err);}
 		

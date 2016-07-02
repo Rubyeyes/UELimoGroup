@@ -20,8 +20,7 @@ angular.module('MyApp')
 		};
 
 		// Fleet Info
-		$scope.fleets = Fleet.fleets;	
-		console.log($scope.fleets[1]);
+		$scope.fleets = Fleet.fleets;
 		$scope.updateFleet = {};
 		$scope.editingFleet = [];
 		$scope.addingNewFleet = false;

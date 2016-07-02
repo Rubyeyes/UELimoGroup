@@ -10,7 +10,7 @@ angular.module('MyApp')
 					headers: {Authorization: 'Bearer '+ Auth.getToken()}
 				}).then(function(response) {
 					angular.copy(response.data, o.info);
-					// return response.data;
+					return response.data;
 				});
 			};
 

@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('MyApp')
-	.controller('FooterCtrl', ['$scope', '$location', '$state', 'Auth', function($scope, $location, $state, Auth) {
-
+	.controller('FooterCtrl', ['$scope', 'Info', function($scope, Info) {
+		Info.getAll().then(function(res) {
+			$scope.information = res;
+		});
 	}])

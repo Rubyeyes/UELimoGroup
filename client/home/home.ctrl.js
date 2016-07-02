@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('MainCtrl',  ['$scope', 'Posts', 'Email', 'Auth', function($scope, Posts, Email, Auth) {
+	.controller('MainCtrl',  ['$scope', 'Posts', 'Email', 'Auth', 'Info', function($scope, Posts, Email, Auth, Info) {
 			$scope.test = 'Hello World!';
 
 			$scope.posts = Posts.posts;
@@ -43,6 +43,9 @@ angular.module('MyApp')
 				$scope.posts.splice($index, 1);
 				$scope.disablePostEdit($index);
 			};
+
+			// Info
+			$scope.information = Info.info;
 
 			//Send email
 			$scope.sendEmail = function() {

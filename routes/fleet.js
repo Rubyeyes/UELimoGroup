@@ -25,7 +25,7 @@ router.post('/', auth, function(req, res, next) {
 });
 
 /* GET fleets page. */
-router.get('/', auth, function(req, res, next) {
+router.get('/', function(req, res, next) {
 	Fleet.find({})
 		.populate('images')
 		.populate('orders')
@@ -49,7 +49,7 @@ router.param('fleet', function(req, res, next, id, file){
 });
 
 /* Get one fleet*/
-router.get('/:fleet', auth, function(req, res){
+router.get('/:fleet', function(req, res){
 	res.fleet.populate('order', function(err, fleet) {
 		if(err) {return next(err);}
 		

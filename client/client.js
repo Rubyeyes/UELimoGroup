@@ -13,6 +13,9 @@ angular.module('MyApp', [
 					resolve: {
 						postPromise: ['Posts', function(Posts) {
 							return Posts.getAll();
+						}],
+						infoPromise: ['Info', function(Info) {
+							return Info.getAll();
 						}]
 					}
 				})
@@ -183,6 +186,51 @@ angular.module('MyApp', [
 				       		}
 				    	})
 				    }]
+				})
+				.state('about', {
+					url: '/about',
+					templateUrl: '/views/about/about.html',
+					controller: 'AboutCtrl',
+					resolve: {
+						infoPromise: ['Info', function(Info) {
+							return Info.getAll();
+						}]
+					}	
+				})
+				.state('fleets', {
+					url: '/fleets',
+					templateUrl: '/views/fleets/fleets.html',
+					controller: 'FleetsCtrl',
+					resolve: {
+						infoPromise: ['Fleet', function(Fleet) {
+							return Fleet.getAll();
+						}]
+					}	
+				})
+				.state('services', {
+					url: '/services',
+					templateUrl: '/views/services/services.html',
+					controller: 'ServicesCtrl',
+					resolve: {
+						infoPromise: ['Service', function(Service) {
+							return Service.getAll();
+						}]
+					}	
+				})
+				.state('reserve', {
+					url: '/reserve',
+					templateUrl: '/views/reserve/reserve.html',
+					controller: 'ReserveCtrl',	
+				})
+				.state('contact', {
+					url: '/contact',
+					templateUrl: '/views/contact/contact.html',
+					controller: 'ContactCtrl',
+					resolve: {
+						infoPromise: ['Info', function(Info) {
+							return Info.getAll();
+						}]
+					}	
 				});
 
 			$urlRouterProvider.otherwise('home');

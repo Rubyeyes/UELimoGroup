@@ -4,6 +4,7 @@ var User = mongoose.model('User');
 var Info = mongoose.model('Info');
 var Fleet = mongoose.model('Fleet');
 var Service = mongoose.model('Service');
+var Image = mongoose.model('Image');
 
 User.remove({}, function(err) {
 	if (err) {
@@ -34,19 +35,19 @@ Info.remove({}, function(err) {
 		console.log(err);
 	} else {
 		var info = new Info();	
-	    info.instagram = "instagram12345678";
-	    info.google_plus = "google12345678";
-	    info.facebook = "facebook12345678";
-	    info.weibo = "weibo12345678";
-	    info.qq = "qq12345678";
-	    info.wechat = "12345678abc";
+	    info.instagram = "http://www.instagram.com";
+	    info.google_plus = "https://plus.google.com/";
+	    info.facebook = "http://www.facebook.com";
+	    info.weibo = "http://www.weibo.com";
+	    info.qq = "http://w.qq.com/";
+	    info.wechat = "https://web.wechat.com/";
 	    info.email = "test@example.com";
 	    info.address = "123 abc st. city, ca 12345";
-	    info.phone_number = 1234567890;
-	    info.company_info = "This is a test info";
+	    info.phone_number = "+1-234-567-8901";
+	    info.company_info = "The 2016 Escalade and Escalade ESV are a perfect combination of sophistication, functionality and technology. At home on all roads, they deliver powerful performance when you need it. Created with craftsmanship not seen in other SUVs, the refined lines and features make one thing immediately apparent – it is first and foremost a Cadillac.";
 	    info.company_name = "UE Limo Group";
 	    info.save(function(err) {
-	    	if(err){return next(err);}
+	    	if(err) {return next(err);}
 	    })
 	}
 });
@@ -87,4 +88,8 @@ Service.remove({}, function(err) {
 			if(err) {return next(err);}
 		})
 	}
+})
+
+Image.remove({}, function(err) {
+	if(err) {return next(err);}
 })

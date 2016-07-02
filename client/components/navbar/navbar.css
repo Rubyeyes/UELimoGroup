@@ -1,11 +1,11 @@
 .navbar-custimize {
 	background-color: rgba(8,8,8,0.5);
-	border-color: transparent;
+	border-width: 0px;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: white;
-	font-size: 17px;
+	font-size: 16px;
 }
 
 .navbar-default .navbar-brand {

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //create a new schema
 var InfoSchema = new mongoose.Schema({
 	company_info: String,
-	phone_number: Number,
+	phone_number: String,
 	address: String,
 	email: String,
 	wechat: String,
