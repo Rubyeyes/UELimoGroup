@@ -21,6 +21,7 @@ require('./models/Info');
 require('./models/Fleet');
 require('./models/Service');
 require('./models/Order');
+require('./models/Image');
 require('./models/User');
 
 // add passport configuration

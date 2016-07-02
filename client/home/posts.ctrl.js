@@ -11,7 +11,6 @@ angular.module('MyApp')
 					author: 'user',
 					upvotes: 0
 				}).then(function(response) {
-					console.log(response.data);
 					$scope.post.comments.push(response.data);
 				});
 				$scope.body ='';

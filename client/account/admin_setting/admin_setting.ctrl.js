@@ -6,12 +6,12 @@ angular.module('MyApp')
 		$scope.editingInfo = false;
 
 		$scope.enableInfoEdit = function() {
-			$scope.editing = true;
+			$scope.editingInfo = true;
 			$scope.updateInfo = $scope.information;
 		};
 
 		$scope.disableInfoEdit = function() {
-			$scope.editing = false;
+			$scope.editingInfo = false;
 		};
 
 		$scope.saveInfo = function(updateInfo) {
@@ -20,7 +20,8 @@ angular.module('MyApp')
 		};
 
 		// Fleet Info
-		$scope.fleets = Fleet.fleets;		
+		$scope.fleets = Fleet.fleets;	
+		console.log($scope.fleets[1]);
 		$scope.updateFleet = {};
 		$scope.editingFleet = [];
 		$scope.addingNewFleet = false;
@@ -103,25 +104,29 @@ angular.module('MyApp')
 
 		// Image uploader
 		// upload later on form submit or something similar
-	    $scope.submit = function() {
-	      if ($scope.form.file.$valid && $scope.file) {
-	        $scope.upload($scope.file);
+	    $scope.submit = function(type, object) {
+	      if ($scope.form.files.$valid && $scope.files) {
+	        $scope.upload($scope.files, type, object).then(function(response) {
+	        	object.images.push(response.data);
+	        });
 	      }
 	    };
 
 	    // upload on file select or drop
-	    $scope.upload = function (file) {
-	        Upload.upload({
-	            url: '/api/upload',
-	            data: {file: file, 'username': $scope.username}
-	        }).then(function (resp) {
-	            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-	        }, function (resp) {
-	            console.log('Error status: ' + resp.status);
-	        }, function (evt) {
-	            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-	            $scope.progress = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name
-	            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-	        });
+	    $scope.upload = function (files, type, object) {
+	    	for (var i = 0; i < files.length; i++) {
+	    		Upload.upload({
+		            url: '/api/' + type + '/' + object._id + '/upload',
+		            data: {file: files[i], 'username': $scope.username}
+		        }).then(function (resp) {
+		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+		        }, function (resp) {
+		            console.log('Error status: ' + resp.status);
+		        }, function (evt) {
+		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+		            $scope.progress = 'progress: ' + progressPercentage + '% ';
+		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+		        });
+	    	}
 	    };
 	}])

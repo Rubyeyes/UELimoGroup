@@ -6,7 +6,8 @@ var FleetSchema = new mongoose.Schema({
 	type: String,
 	description: String,
 	price: Number,
-	order: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
+	orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
+	images: [{type: mongoose.Schema.Types.ObjectId, ref: 'Image'}]
 });
 
 mongoose.model('Fleet', FleetSchema);
