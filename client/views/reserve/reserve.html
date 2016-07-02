@@ -1,1 +1,28 @@
-reserve.html
+
+<h1>Reservation</h1>
+
+<form ng-submit="addReservation()" ng-show="isLoggedIn()" style="margin-top:30px">
+	<div class="form-group">
+		<label >When Need the Service: </label>
+		<input type="date" ng-model="date" placeholder="Date">
+	</div>
+	<div class="form-group">
+		<label >How Many Guests:</label>
+		<input type="number" ng-model="people" placeholder="Number of People">
+	</div>
+	<div class="form-group">
+		<label >Which Fleet: </label>
+		<select ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet"></select><br>
+		<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
+	</div>
+	<div class="form-group">
+		<label >Which Service: </label>
+		<select ng-options="service as service.name for service in services track by service._id" ng-model="selectedService"></select>
+	</div>
+	
+	<button type="submit" class="btn btn-primary" >Confirm</button>
+</form>
+
+<div ng-hide="isLoggedIn()">
+  <h3>You need to <a href="/login">Log In</a> or <a href="/register">Register</a> before reservation.</h3>
+</div>

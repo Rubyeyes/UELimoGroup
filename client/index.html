@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="./components/footer/footer.css">
 		<link rel="stylesheet" href="./home/home.css">
 		<link rel="stylesheet" href="./views/fleets/fleets.css">
+		<link rel="stylesheet" href="./views/services/services.css">
+		<link rel="stylesheet" href="./views/about/about.css">
 		<link rel="stylesheet" href="./account/admin_setting/admin_setting.css">
 
 		<style> .glyphicon-thumbs-up { cursor:pointer } </style>
@@ -31,10 +33,12 @@
 		
 		<navbar></navbar>
 		<div ui-view="navsecond"></div>		
-		<div class="container">
+		<div class="container" style="height:87vh;">
 			<div ui-view></div>
-			<footer></footer>
 		</div>
+		<div class=container>
+			<footer></footer>
+		</div>	
 
 		<!-- angularjs jquery bootstrap javascript cdn -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" ></script>
@@ -56,6 +60,7 @@
 		<script src="/components/factory/info.factory.js" ></script>
 		<script src="/components/factory/fleet.factory.js" ></script>
 		<script src="/components/factory/service.factory.js" ></script>
+		<script src="/components/factory/order.factory.js" ></script>
 		<script src="/account/auth/auth.ctrl.js" ></script>
 		<script src="/account/auth/auth.directive.js" ></script>
 		<script src="/account/admin_setting/admin_setting.ctrl.js" ></script>

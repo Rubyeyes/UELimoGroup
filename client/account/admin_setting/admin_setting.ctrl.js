@@ -60,7 +60,6 @@ angular.module('MyApp')
 			$scope.disableFleetEdit($index);
 		};
 
-		$scope.fleetOrder = 'brand';
 
 		// Service Info		
 		$scope.services = Service.services;		

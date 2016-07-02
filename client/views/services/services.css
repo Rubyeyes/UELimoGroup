@@ -1,19 +1,19 @@
-.container-fleet {
+.container-service {
 	padding: 0px;
 	margin-bottom: 30px;
 }
 
-.thumbnail-fleet > img {
-	height: 305px;
+.thumbnail-service > img {
+	height: 200px;
 }
 
-.fleet-head {
+.service-head {
 	text-align: center;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
-.btn-fleet {
+.btn-service {
 	width: 45%;
 	margin-right: 10px;
 	background-color: rgba(218, 199, 98, 1);

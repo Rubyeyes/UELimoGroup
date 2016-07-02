@@ -220,7 +220,15 @@ angular.module('MyApp', [
 				.state('reserve', {
 					url: '/reserve',
 					templateUrl: '/views/reserve/reserve.html',
-					controller: 'ReserveCtrl',	
+					controller: 'ReserveCtrl',
+					resolve: {
+						fleetPromise: ['Fleet', function(Fleet) {
+							return Fleet.getAll();
+						}],
+						servicePromise: ['Service', function(Service) {
+							return Service.getAll();
+						}]
+					}		
 				})
 				.state('contact', {
 					url: '/contact',

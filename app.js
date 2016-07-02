@@ -34,6 +34,7 @@ var routes_info = require('./routes/info');
 var routes_fleets = require('./routes/fleet');
 var routes_services = require('./routes/service');
 var routes_upload = require('./routes/upload');
+var routes_orders = require('./routes/order');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.use('/api/info', routes_info);
 app.use('/api/fleets', routes_fleets);
 app.use('/api/services', routes_services);
 app.use('/api/upload', routes_upload);
+app.use('/api/orders', routes_orders);
 //redirect other url to angularjs
 app.use(function(req, res) {
   // Use res.sendfile, as it streams instead of reading the file into memory.
