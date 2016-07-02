@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-static-top">
+<div class="navbar navbar-default navbar-static-top navbar-custimize">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="collaps()">
@@ -10,6 +10,18 @@
       <a href="/" class="navbar-brand">UE Limo Group</a>
     </div>
     <div uib-collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: isActive('/about')}">
+          <a href="/about">About Us</a>
+        </li>
+        <li ng-class="{active: isActive('/fleet')}">
+          <a href="/fleet">Fleets</a>
+        </li>
+        <li ng-class="{active: isActive('/service')}">
+          <a href="/service">Services</a>
+        </li>
+      </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/register">Sign up</a></li>

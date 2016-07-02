@@ -4,9 +4,13 @@
 	<head>
     	<base href="/">
 		<title>UE Limo Group</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<!-- bootstrap sylesheet -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
 		<link rel="stylesheet" href="/client.css">
+		<link rel="stylesheet" href="./components/navbar/navbar.css">
+		<link rel="stylesheet" href="./components/footer/footer.css">
+		<link rel="stylesheet" href="./home/home.css">
 
 		<style> .glyphicon-thumbs-up { cursor:pointer } </style>
 	</head>
@@ -17,6 +21,7 @@
 		<div ui-view="navsecond"></div>		
 		<div class="container">
 			<div ui-view></div>
+			<footer></footer>
 		</div>
 
 		<!-- angularjs jquery bootstrap javascript cdn -->
@@ -46,6 +51,8 @@
 		<script src="/components/navbar/navbar.ctrl.js" ></script>
 		<script src="/components/navbar/navbarSecond.ctrl.js" ></script>
 		<script src="/components/navbar/navbar.directive.js" ></script>
+		<script src="/components/footer/footer.ctrl.js" ></script>
+		<script src="/components/footer/footer.directive.js" ></script>
 
 	</body>
 </html>
