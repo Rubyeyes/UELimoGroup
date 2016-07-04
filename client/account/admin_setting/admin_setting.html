@@ -63,7 +63,8 @@
 				<th>Image</th>
 				<th>Brand</th>
 				<th>Type</th>
-				<th>Price/hour</th>
+				<th>Price/Hour</th>
+				<th>Price/Day</th>
 				<th>Description</th>
 			</tr>
 		</thead>
@@ -75,6 +76,7 @@
 				<td ng-hide="editingFleet[$index]">{{fleet.brand}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.type}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.price}}</td>
+				<td ng-hide="editingFleet[$index]">{{fleet.price_day}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.description}}</td>
 				<td ng-hide="editingFleet[$index]">
 					<button ng-click="enableFleetEdit(fleet, $index)">Edit</button>
@@ -96,6 +98,7 @@
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.brand"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.type"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price"></td>
+				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price_day"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.description"></td>
 				<td ng-show="editingFleet[$index]">
 					<button ng-click="saveFleet(fleet, updateFleet, $index)">Save</button>

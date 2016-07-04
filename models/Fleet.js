@@ -6,6 +6,7 @@ var FleetSchema = new mongoose.Schema({
 	type: String,
 	description: String,
 	price: Number,
+	price_day: Number,
 	orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
 	images: [{type: mongoose.Schema.Types.ObjectId, ref: 'Image'}]
 });

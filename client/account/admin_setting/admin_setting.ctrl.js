@@ -35,11 +35,13 @@ angular.module('MyApp')
 				brand: $scope.brand,
 				type: $scope.type,
 				price: $scope.price,
+				price_day: $scope.price_day,
 				description: $scope.description
 			});
 			$scope.brand = '';
 			$scope.type = '';
 			$scope.price = '';
+			$scope.price_day = '';
 			$scope.description = '';
 			$scope.disableFleetAdd();
 		};

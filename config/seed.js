@@ -71,6 +71,7 @@ Fleet.remove({}, function(err) {
 		fleet.type = "Camry" ;
 		fleet.description = "Nice fancy car" ;
 		fleet.price = 12;
+		fleet.price_day = 120;
 		fleet.save(function(err) {
 			if(err) {return next(err);}
 		}) 
@@ -80,6 +81,7 @@ Fleet.remove({}, function(err) {
 		fleet2.type = "Accord" ;
 		fleet2.description = "Cheap car" ;
 		fleet2.price = 9;
+		fleet2.price_day = 90;
 		fleet2.save(function(err) {
 			if(err) {return next(err);}
 		}) 
