@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var jwt = require('express-jwt');
 var Order = mongoose.model('Order');
+var User = mongoose.model('User');
+var Fleet = mongoose.model('Fleet');
+var Service = mongoose.model('Service');
 
 //middleware to authenticate jwt tokens
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
@@ -18,6 +21,15 @@ router.post('/', auth, function(req, res, next) {
 
 	order.save(function(err, order) {
 		if(err){return next(err);}
+
+		user = User.findById(order.user[0]).exec(function(err, user) {
+			user.orders.push(order);
+			console.log(user.orders);
+			user.save(function(err) {
+				if(err) {return next(err);}
+			});
+		});
+
 		res.json(order);
 	});
 });
@@ -33,16 +45,6 @@ router.get('/', function(req, res, next) {
 		);
 });
 
-/* GET all orders of an user. */
-router.get('/:user', function(req, res, next) {
-	Order.find({})
-		.populate('fleet')
-		.populate('service')
-		.exec(function(err, orders) {
-			if(err){return next(err);}
-			res.json(orders);}
-		);
-});
 
 /* Preload order object */
 router.param('order', function(req, res, next, id, file){

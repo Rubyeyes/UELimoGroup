@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.factory('Order', ['$http', 'Auth',  function($http, Auth){
+	.factory('Order', ['$http', 'Auth', function($http, Auth) {
 			var o = {
 				orders: []
 			};

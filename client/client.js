@@ -117,6 +117,12 @@ angular.module('MyApp', [
 						},
 						"": {
 							templateUrl: '/account/history/history.html',
+							controller: 'HistoryCtrl',
+							resolve: {
+								user: ['Auth', function(Auth) {
+									return Auth.getUserInfo();
+								}]
+							}
 						}
 					},
 				    onEnter: ['$state', 'Auth',function($state, Auth){
@@ -227,6 +233,12 @@ angular.module('MyApp', [
 						}],
 						servicePromise: ['Service', function(Service) {
 							return Service.getAll();
+						}],
+						user: ['Auth', function(Auth) {
+							return Auth.getUserInfo();
+						}],
+						infoPromise: ['Service', function(Service) {
+							return Service.getAll();
 						}]
 					}		
 				})
@@ -244,7 +256,7 @@ angular.module('MyApp', [
 			$urlRouterProvider.otherwise('home');
 		    //user html5 route mode
 		    $locationProvider.html5Mode(true);
-		}])
+		}]);
 		
 		
 		

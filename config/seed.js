@@ -5,6 +5,7 @@ var Info = mongoose.model('Info');
 var Fleet = mongoose.model('Fleet');
 var Service = mongoose.model('Service');
 var Image = mongoose.model('Image');
+var Order = mongoose.model('Order');
 
 User.remove({}, function(err) {
 	if (err) {
@@ -16,6 +17,15 @@ User.remove({}, function(err) {
 		user1.role = 'user';
 		user1.setPassword('test');
 		user1.save(function(err) {
+			if(err){return next(err);}
+		});
+
+		var user2 = new User();
+		user2.username = 'Alan';
+		user2.email = 'catian315@gmail.com';
+		user2.role = 'user';
+		user2.setPassword('test');
+		user2.save(function(err) {
 			if(err){return next(err);}
 		});
 
@@ -91,5 +101,9 @@ Service.remove({}, function(err) {
 })
 
 Image.remove({}, function(err) {
+	if(err) {return next(err);}
+})
+
+Order.remove({}, function(err) {
 	if(err) {return next(err);}
 })

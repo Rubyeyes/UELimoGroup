@@ -15,9 +15,16 @@ User API
 ============================================================ */
 /* Preload comment object */
 router.param('user', function(req, res, next, id) {
-	var query = User.findById(id);
-
-	query.exec(function(err, user) {
+	User.findById(id)
+		.populate({
+			path: 'orders',
+			populate: {path: 'fleet'}
+		})
+		.populate({
+			path: 'orders',
+			populate: {path: 'service'}
+		})
+		.exec(function(err, user) {
 		if(err) {return next(err);}
 		if(!user) {return next(new Error('Can\'t find user'));}
 

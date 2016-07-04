@@ -13,31 +13,31 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 /* ========================================================== 
 email api
 ============================================================ */
-router.post('/api/email', auth, function(req, res, next) {
-	var helper = require('sendgrid').mail
-	from_email = new helper.Email(process.env.WEB_ADDRESS)
-	to_email = new helper.Email("catian315@gmail.com")
-	subject = req.body.subject
-	content = new helper.Content("text/plain", req.body.content)
-	mail = new helper.Mail(from_email, subject, to_email, content)
+// router.post('/api/email', auth, function(req, res, next) {
+// 	var helper = require('sendgrid').mail
+// 	from_email = new helper.Email(process.env.WEB_ADDRESS)
+// 	to_email = new helper.Email("catian315@gmail.com")
+// 	subject = req.body.subject
+// 	content = new helper.Content("text/plain", req.body.content)
+// 	mail = new helper.Mail(from_email, subject, to_email, content)
 
-	var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
-	var requestBody = mail.toJSON()
-	var request = sg.emptyRequest()
-	request.method = 'POST'
-	request.path = '/v3/mail/send'
-	request.body = requestBody
-	sg.API(request, function (response) {
-		// console.log(response.statusCode)
-		// console.log(response.body)
-		// console.log(response.headers)
-		if(response.body) {
-			return next(response.body);
-		}
-		res.json(response.statusCode);
-	})
+// 	var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+// 	var requestBody = mail.toJSON()
+// 	var request = sg.emptyRequest()
+// 	request.method = 'POST'
+// 	request.path = '/v3/mail/send'
+// 	request.body = requestBody
+// 	sg.API(request, function (response) {
+// 		// console.log(response.statusCode)
+// 		// console.log(response.body)
+// 		// console.log(response.headers)
+// 		if(response.body) {
+// 			return next(response.body);
+// 		}
+// 		res.json(response.statusCode);
+// 	})
 
-});
+// });
 
 /* ========================================================== 
 post api

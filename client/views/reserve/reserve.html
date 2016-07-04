@@ -4,20 +4,20 @@
 <form ng-submit="addReservation()" ng-show="isLoggedIn()" style="margin-top:30px">
 	<div class="form-group">
 		<label >When Need the Service: </label>
-		<input type="date" ng-model="date" placeholder="Date">
+  		<input type="datetime-local" ng-model="date" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
 	</div>
 	<div class="form-group">
 		<label >How Many Guests:</label>
-		<input type="number" ng-model="people" placeholder="Number of People">
+		<input type="number" ng-model="people" placeholder="Number of People" required>
 	</div>
 	<div class="form-group">
 		<label >Which Fleet: </label>
-		<select ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet"></select><br>
+		<select ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet" required></select><br>
 		<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
 	</div>
 	<div class="form-group">
 		<label >Which Service: </label>
-		<select ng-options="service as service.name for service in services track by service._id" ng-model="selectedService"></select>
+		<select ng-options="service as service.name for service in services track by service._id" ng-model="selectedService" required></select>
 	</div>
 	
 	<button type="submit" class="btn btn-primary" >Confirm</button>
