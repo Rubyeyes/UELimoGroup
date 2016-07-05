@@ -67,7 +67,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(app.get('appRoot') + '/client'));//serve the static index.html from the lib folder
-app.use(favicon(path.resolve(app.get('appRoot') + '/favicon.ico')));
+app.use(favicon(path.resolve(app.get('appRoot') + '/favicon.png')));
 app.use(passport.initialize());
 
 app.use('/', routes);

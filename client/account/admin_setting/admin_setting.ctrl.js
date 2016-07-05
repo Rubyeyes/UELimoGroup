@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleet', 'Service', 'Upload', function($scope, Info, Fleet, Service, Upload) {
+	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleet', 'Service', 'Upload', 'Image', function($scope, Info, Fleet, Service, Upload, Image) {
 		// Basic Info
 		$scope.information = Info.info;
 		$scope.updateInfo = {};
@@ -113,20 +113,16 @@ angular.module('MyApp')
 	    };
 
 	    // upload on file select or drop
-	    $scope.upload = function (files, type, object) {
-	    	for (var i = 0; i < files.length; i++) {
-	    		Upload.upload({
-		            url: '/api/' + type + '/' + object._id + '/upload',
-		            data: {file: files[i], 'username': $scope.username}
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            $scope.progress = 'progress: ' + progressPercentage + '% ';
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-	    	}
+	    $scope.upload = function (files, type, object, index) {
+	    	Image.create(files, type, object);
+        	$scope.disableServiceEdit(index);
+        	$scope.disableFleetEdit(index);
 	    };
+
+	    // remove a image
+	    $scope.removeImage = function (type, object, index) {
+	    	Image.delete(type, object);
+        	$scope.disableServiceEdit(index);
+        	$scope.disableFleetEdit(index);
+	    }
 	}])

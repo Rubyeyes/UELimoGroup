@@ -89,7 +89,7 @@ var upload = multer({ //multer settings
             })
 
 /** API path that will upload the files */
-router.post('/:fleet/upload', upload.single('file'), function(req, res) {
+router.post('/:fleet/image/upload', upload.single('file'), function(req, res) {
 
 	var image = new Image();
 	image.name = req.file.originalname;
@@ -113,6 +113,28 @@ router.post('/:fleet/upload', upload.single('file'), function(req, res) {
          res.json(image);
     })   
 
+});
+
+/* Remove img of a fleet */
+router.delete('/:fleet/image/delete', function(req, res) { 
+	console.log(res.fleet._id); 
+	Fleet.findOne({_id: res.fleet._id})
+		.populate('images')
+		.exec(function(err, fleet) {
+		console.log(fleet._id);
+		if(err) {return next(err)};
+		const fs = require('fs');
+		var img_url = 'client' + fleet.images[0].url.replace('../..','') ;
+		fs.unlink(img_url, (err) => {
+		  if (err) throw err;
+		  console.log('successfully deleted');
+		});
+
+		Image.findOne({_id: fleet.images[0]._id}, function(err, image) {
+			if(err) {return next(err)};
+			image.remove();
+		})
+	})
 });
 
 module.exports = router;
