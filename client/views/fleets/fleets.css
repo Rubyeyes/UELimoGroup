@@ -1,6 +1,7 @@
 .container-fleet {
 	padding: 0px;
 	margin-bottom: 30px;
+	height: 100%;
 }
 
 .thumbnail-fleet > img {

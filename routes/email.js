@@ -11,27 +11,50 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 /* ========================================================== 
 email api
 ============================================================ */
-router.post('/', auth, function(req, res, next) {
-	console.log(req.body);
-	var helper = require('sendgrid').mail
-	from_email = new helper.Email(process.env.WEB_ADDRESS)
-	to_email = new helper.Email(req.body.cc)
-	subject = req.body.subject
-	content = new helper.Content("text/html", req.body.content)
-	mail = new helper.Mail(from_email, subject, to_email, content)
-	console.log(mail);
+router.post('/', function(req, res, next) {
+	// var helper = require('sendgrid').mail
+	// from_email = new helper.Email(process.env.WEB_ADDRESS)
+	// to_email = new helper.Email(req.body.email)
+	// subject = req.body.subject
+	// content = new helper.Content("text/html", req.body.content)
+	// mail = new helper.Mail(from_email, subject, to_email, content)
+
+
+	var mail = {
+		"from": {
+		    "email": process.env.WEB_ADDRESS,
+		    "name": "U E Limo Group"
+		},
+		"content": [
+		    {
+		        "type": "text/html",
+		        "value": req.body.content
+		    }
+		],
+		"personalizations": [
+		    {
+			    "cc": [
+			        {
+			            "email": req.body.cc,
+			        }
+			    ],
+			    "subject": req.body.subject,
+			    "to": [
+			        {
+			            "email": req.body.email,
+			        }
+			    ]
+		    }
+		],
+  		"subject": req.body.subject,
+	};
 
 	var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
-	var requestBody = mail.toJSON()
-	console.log(requestBody);
 	var request = sg.emptyRequest()
 	request.method = 'POST'
 	request.path = '/v3/mail/send'
-	request.body = requestBody
+	request.body = mail
 	sg.API(request, function (response) {
-		// console.log(response.statusCode)
-		// console.log(response.body)
-		// console.log(response.headers)
 		if(response.body) {
 			return next(response.body);
 		}

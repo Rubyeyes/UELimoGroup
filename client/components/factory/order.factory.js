@@ -10,6 +10,7 @@ angular.module('MyApp')
 					headers: {Authorization: 'Bearer '+ Auth.getToken()}
 				}).then(function(response) {
 					o.orders.push(response.data);
+					return response.data;
 				});
 			};
 			//get all orders

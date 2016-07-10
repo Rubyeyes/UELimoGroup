@@ -16,19 +16,20 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 order api
 ============================================================ */
 /* Add a order. */
-router.post('/', auth, function(req, res, next) {
+router.post('/', function(req, res, next) {
 	var order = new Order(req.body);
 
 	order.save(function(err, order) {
 		if(err){return next(err);}
 
-		user = User.findById(order.user[0]).exec(function(err, user) {
-			user.orders.push(order);
-			console.log(user.orders);
-			user.save(function(err) {
-				if(err) {return next(err);}
+		if(order.user[0]) {			
+			user = User.findById(order.user[0]).exec(function(err, user) {
+				user.orders.push(order);
+				user.save(function(err) {
+					if(err) {return next(err);}
+				});
 			});
-		});
+		}
 
 		res.json(order);
 	});

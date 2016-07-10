@@ -51,7 +51,7 @@ Info.remove({}, function(err) {
 	    info.weibo = "http://www.weibo.com";
 	    info.qq = "http://w.qq.com/";
 	    info.wechat = "https://web.wechat.com/";
-	    info.email = "test@example.com";
+	    info.email = "tianchangan@hotmail.com";
 	    info.address = "123 abc st. city, ca 12345";
 	    info.phone_number = "+1-234-567-8901";
 	    info.company_info = "The 2016 Escalade and Escalade ESV are a perfect combination of sophistication, functionality and technology. At home on all roads, they deliver powerful performance when you need it. Created with craftsmanship not seen in other SUVs, the refined lines and features make one thing immediately apparent – it is first and foremost a Cadillac.";
