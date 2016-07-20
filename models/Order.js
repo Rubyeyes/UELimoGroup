@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 //create a new schema
 var OrderSchema = new mongoose.Schema({
-	name: String,
+	username: String,
 	email: String,
 	phone_number: Number,
 	date: Date,

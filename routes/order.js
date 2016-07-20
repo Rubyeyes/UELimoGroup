@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
 
 	order.save(function(err, order) {
 		if(err){return next(err);}
-
+		console.log(order.user[0]);
 		if(order.user[0]) {			
 			user = User.findById(order.user[0]).exec(function(err, user) {
 				user.orders.push(order);
