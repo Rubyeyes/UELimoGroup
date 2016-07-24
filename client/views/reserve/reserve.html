@@ -29,6 +29,7 @@
 				<div class="form-group">
 					<label >Which fleet: </label>
 					<select class="form-control" ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet" required></select><br>
+					<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
 				</div>
 				<div class="form-group">
 					<label >Which service: </label>
@@ -42,12 +43,12 @@
 				</div>
 				<div class="form-group" ng-show="createAccount" >
 			        <label>Password</label>
-			        <input type="password" name="password" class="form-control" placeholder="Password" ng-minlength="3" ng-model="newUser.password" required>
+			        <input type="password" name="password" class="form-control" placeholder="Password" ng-minlength="3" ng-model="newUser.password">
 			    </div>
 
 			    <div class="form-group" ng-show="createAccount">
 			        <label>Confirm Password</label>
-			        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.passwordConfirm" match="newUser.password" ng-minlength="3" required>
+			        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.passwordConfirm" match="newUser.password" ng-minlength="3">
 			        <p class="help-block alert alert-danger"
 			        ng-show="form.confirmPassword.$error.match && submitted">
 			        Passwords must match.
@@ -57,19 +58,5 @@
 			</form>
 		</div>
 	</div>
-
-	<div class="col-sm-12 col-lg-6" ng-hide="reserveFinished">
-		<div class="panel panel-head panel-reserve-image">
-			<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
-		</div>
-	</div>
-
-	<div class="col-sm-12 col-lg-6" ng-show="reserveFinished">		
-		<div class="panel panel-head panel-reserve">
-			<h1>Congratulations~! Your reservation has been made</h1>
-			<button class="btn btn-primary">Continue Shopping</button>
-		</div>
-	</div>
-
 
 </div>

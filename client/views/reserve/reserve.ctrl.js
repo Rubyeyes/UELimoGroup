@@ -1,17 +1,20 @@
 angular.module('MyApp')
-	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth) {
+	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', '$state', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth, $state) {
 		$scope.services = Service.services;
 		$scope.fleets = Fleet.fleets;
 		$scope.newUser = {};
 		var currentOrder = {};
 
 		$scope.addReservation = function() {
+
 			if($scope.date === '' || $scope.people ==='' || $scope.selectedFleet === {} || $scope.selectedService === {}) {return};
 			
 			if($scope.createAccount) {
+				console.log('createdAccount');
 				Auth.register($scope.newUser).then(function(err) {
 					if(err) {
 						$scope.error = err.message;
+						$scope.createAccount = false;
 					} else {
 						Auth.getUserInfo().then(function(resp) {
 							currentOrder = {
@@ -23,10 +26,11 @@ angular.module('MyApp')
 								fleet: $scope.selectedFleet._id,
 								service: $scope.selectedService._id,
 								user: resp._id,
-							}
-							console.log(currentOrder);
+							};
 							Order.create(currentOrder).then(function(order) {
 								$scope.sendEmail(order);
+								$state.go('history');
+								$scope.createAccount = false;
 							});
 						});
 					}
@@ -44,8 +48,10 @@ angular.module('MyApp')
 				}
 				Order.create(currentOrder).then(function(order) {
 					$scope.sendEmail(order);
+					$state.go('history');
 				});
 			} else {
+				console.log('NotCreateUser');
 				currentOrder = {
 					username: $scope.newUser.username,
 					email: $scope.newUser.email,
@@ -57,6 +63,7 @@ angular.module('MyApp')
 				}
 				Order.create(currentOrder).then(function(order) {
 					$scope.sendEmail(order);
+					$state.go('home');
 				});
 			}
 			

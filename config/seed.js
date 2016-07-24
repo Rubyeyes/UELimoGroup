@@ -20,14 +20,14 @@ User.remove({}, function(err) {
 			if(err){return next(err);}
 		});
 
-		var user2 = new User();
-		user2.username = 'Alan';
-		user2.email = 'catian315@gmail.com';
-		user2.role = 'user';
-		user2.setPassword('test');
-		user2.save(function(err) {
-			if(err){return next(err);}
-		});
+		// var user2 = new User();
+		// user2.username = 'Alan';
+		// user2.email = 'catian315@gmail.com';
+		// user2.role = 'user';
+		// user2.setPassword('test');
+		// user2.save(function(err) {
+		// 	if(err){return next(err);}
+		// });
 
 		var admin = new User();
 		admin.username =  'Admin';
