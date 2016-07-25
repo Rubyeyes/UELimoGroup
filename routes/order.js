@@ -30,9 +30,15 @@ router.post('/', function(req, res, next) {
 				});
 			});
 		}
-
-		res.json(order);
 	});
+
+	var query = Order.findById(order._id);
+	query.populate('fleet')
+		.populate('service')
+		.exec(function(err, order) {
+			if(err) {return next(err);}
+			res.json(order);
+		});
 });
 
 /* GET all orders page. */

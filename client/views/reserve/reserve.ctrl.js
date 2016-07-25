@@ -1,5 +1,5 @@
 angular.module('MyApp')
-	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', '$state', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth, $state) {
+	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', '$state', '$filter', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth, $state, $filter) {
 		$scope.services = Service.services;
 		$scope.fleets = Fleet.fleets;
 		$scope.newUser = {};
@@ -10,7 +10,6 @@ angular.module('MyApp')
 			if($scope.date === '' || $scope.people ==='' || $scope.selectedFleet === {} || $scope.selectedService === {}) {return};
 			
 			if($scope.createAccount) {
-				console.log('createdAccount');
 				Auth.register($scope.newUser).then(function(err) {
 					if(err) {
 						$scope.error = err.message;
@@ -51,7 +50,6 @@ angular.module('MyApp')
 					$state.go('history');
 				});
 			} else {
-				console.log('NotCreateUser');
 				currentOrder = {
 					username: $scope.newUser.username,
 					email: $scope.newUser.email,
@@ -71,11 +69,23 @@ angular.module('MyApp')
 
 		//Send email
 		$scope.sendEmail = function(order) {
+			var currentFleet = order.fleet[0];
+			var currentService = order.service[0];
+			var template = "<html><h3 style='color: #a1774f'>Thank you for choosing U E Limo Group</h3><br><h3>" +
+							"Your Order # is : " + order._id + 
+							"</h3><p>Name: " + order.username + 
+							"</p><p>Email: " + order.email + 
+							"</p><p>Phone #: " + order.phone_number + 
+							"</p><p>Fleet: " + currentFleet.brand + " " + currentFleet.type +
+							"</p><p>Service: " + currentService.name + 
+							"</p><p>People: " + order.people + 
+							"</p><p>Date: " + $filter('date')(order.date, "yyyy-MM-dd HH:mm")+ 
+							"</p></html>"
 			Email.sendEmail({	
 				email: order.email,
 				cc: Info.info.email,
 				subject: "UE Limo Group Reservation",
-				content: "<html><p>You got a new order</p></html>"
+				content: template
 			});
 		}
 
