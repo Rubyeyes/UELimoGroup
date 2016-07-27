@@ -1,27 +1,27 @@
 <div class="container-fluid container-about">
 
-	<div class="panel panel-body panel-about">
-		<h1>Welcome to UE Limo Group</h1>
-		<p> Company: {{information.company_info}} </p>
+	<div class="jumbotron jumbotron-about">
+		<h1>{{"WELCOME_TO" | translate}} UE Limo Group</h1>
+		<p> {{information.company_info}} </p>
 	</div>
 
 	<div class="panel panel-body panel-about table-responsive">
-		<h1>Contact</h1>
-		<table class="table table-condense">
+		<h1>{{"CONTACT" | translate}} {{"INFO" | translate}}</h1>
+		<table class="table table-condense table-about">
 			<tr>
-				<th>Phone Number</th>
+				<th>{{"PHONE" | translate}} {{"NUMBER" | translate}}</th>
 				<td>{{information.phone_number}}</td>
 			</tr>
 			<tr>
-				<th>Address</th>
+				<th>{{"ADDRESS" | translate}}</th>
 				<td>{{information.address}}</td>
 			</tr>
 			<tr>
-				<th>Email</th>
+				<th>{{"EMAIL" | translate}}</th>
 				<td>{{information.email}}</td>
 			</tr>
 			<tr>
-				<th>Wechat</th>
+				<th>{{"WECHAT" | translate}}</th>
 				<td>{{information.wechat}}</td>
 			</tr>
 			<tr>
@@ -29,7 +29,7 @@
 				<td>{{information.qq}}</td>
 			</tr>
 			<tr>
-				<th>Weibo</th>
+				<th>{{"WEIBO" | translate}}</th>
 				<td>{{information.weibo}}</td>
 			</tr>
 			<tr>

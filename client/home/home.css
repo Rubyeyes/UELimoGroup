@@ -1,8 +1,8 @@
-.jumbotron {
+.jumbotron-home {
 	background-color: transparent;
 }
 
-.jumbotron > h1 {
+.jumbotron-home > h1 {
 	color: white;
 	font-family: 'Pattaya', sans-serif;
 }

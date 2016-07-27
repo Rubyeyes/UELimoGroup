@@ -1,6 +1,6 @@
 <div class="container-fluid container-fleet">
 
-	<h1 class="fleet-head">Pick Your Favourite Vehicle</h1>
+	<h1 class="fleet-head">{{"PICK_YOUR_FAOURITE_VEHICLE" | translate}}</h1>
 
 	<div ng-repeat="fleet in fleets">
 	  <div class="col-sm-6 col-md-4">
@@ -10,8 +10,8 @@
 	        <h3> ${{fleet.price}}/Hour | ${{fleet.price_day}}/Day</h3>
 	        <p>{{fleet.brand}} {{fleet.type}}</p>
 	        <p>
-	        	<a href="#" class="btn btn-primary btn-fleet" role="button">Reserve</a> 
-	        	<a href="#" class="btn btn-primary btn-fleet" role="button">Call</a> 
+	        	<a href="#" class="btn btn-primary btn-fleet" role="button">{{"RESERVATION" | translate}}</a> 
+	        	<a href="#" class="btn btn-primary btn-fleet" role="button">{{"CALL" | translate}}</a> 
 	        </p>
 	      </div>
 	    </div>

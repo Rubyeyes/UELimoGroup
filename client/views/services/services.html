@@ -1,6 +1,6 @@
 <div class="container-fluid container-service">
 
-	<h1 class="service-head">Enjoy your trip</h1>
+	<h1 class="service-head">{{"ENJOY_YOUR_TRIP" | translate}}</h1>
 
 	<div ng-repeat="service in services">
 	  <div class="col-sm-6 col-md-6">
@@ -10,8 +10,8 @@
 	        <h3> ${{service.price}}/h </h3>
 	        <p>{{service.description}}</p>
 	        <p>
-	        	<a href="#" class="btn btn-primary btn-service" role="button">Reserve</a> 
-	        	<a href="#" class="btn btn-primary btn-service" role="button">Call</a> 
+	        	<a href="#" class="btn btn-primary btn-service" role="button">{{"RESERVATION" | translate}}</a> 
+	        	<a href="#" class="btn btn-primary btn-service" role="button">{{"CALL" | translate}}</a> 
 	        </p>
 	      </div>
 	    </div>

@@ -15,32 +15,38 @@
       
       <ul class="nav navbar-nav">
         <li ng-class="{active: isActive('/about')}">
-          <a href="/about">About Us</a>
+          <a href="/about">{{"ABOUT" | translate}} {{"US" | translate}}</a>
         </li>
         <li ng-class="{active: isActive('/fleets')}">
-          <a href="/fleets">Fleets</a>
+          <a href="/fleets">{{"FLEETS" | translate}}</a>
         </li>
         <li ng-class="{active: isActive('/services')}">
-          <a href="/services">Services</a>
+          <a href="/services">{{"SERVICES" | translate}}</a>
         </li>
         <li ng-class="{active: isActive('/reserve')}">
-          <a href="/reserve">Online Reservation</a>
+          <a href="/reserve">{{"ONLING" | translate}} {{"RESERVATION" | translate}}</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/register">Sign up</a></li>
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/register">{{"SIGN_UP" | translate}}</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">{{"LOG_IN" | translate}}</a></li>
         <li class="dropdown" ng-show="isLoggedIn()">
           <a ng-hide="isAdmin()" href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            Hola~! {{ currentUser() }} <span class="caret"></span>
+            {{"HELLO" | translate}}~! {{ currentUser() }} <span class="caret"></span>
           </a>
           <a ng-show="isAdmin()" href="/admin_setting" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            Hola~! {{ currentUser() }} <span class="caret"></span>
+            {{"HELLO" | translate}}~! {{ currentUser() }} <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li ng-click="logOut()"><a href="#">Logout</a></li>
+            <li ng-click="logOut()"><a href="#">{{"LOG_OUT" | translate}}</a></li>
           </ul>
+        </li>
+        <li style="margin-top:14px; margin-left:12px;">
+          <select ng-model="locale"
+                  ng-change="updateLocale(locale)" 
+                  ng-options="locale.id as locale.name for locale in locales">            
+          </select>
         </li>
       </ul>
     </div>

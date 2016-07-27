@@ -1,17 +1,30 @@
-<div ng-show="error" class="alert alert-danger row">
-	<span>{{ error }}</span>
+<div ng-show="err" class="alert alert-danger row" style="margin:10px;">
+	<span>{{ err }}</span>
 </div>
 
-<form ng-submit="logIn()" name="form" style="margin-top:30px;">
-	<h3>Log In</h3>
+<div ng-show="notice" class="alert alert-success row" style="margin:10px;">
+	<span>{{ notice }}</span>
+</div>
 
-	<div class="form-group">
-		<input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required>
-	</div>
+<div class="panel panle-head panel-auth">
+	<form ng-submit="logIn()" name="form">
+		<h2>{{"LOG_IN" | translate}}</h2>
 
-	<div class="form-group">
-		<input type="password" namd="password" class="form-control" placeholder="Password" ng-model="user.password" required="">
-	</div>
+		<br>
 
-	<button type="submit" class="btn btn-primary">Log In</button>
-</form>
+		<div class="form-group">
+			<label>{{"EMAIL" | translate}}</label>
+			<input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required>
+		</div>
+
+		<div class="form-group">
+			<label>{{"PASSWORD" | translate}}</label>
+			<input type="password" namd="password" class="form-control" placeholder="Password" ng-model="user.password" required="">
+			<!-- <a type="button" ng-click="forgetPassword()">Forget password</a> -->
+		</div>
+
+		<br>
+
+		<button type="submit" class="btn btn-primary">{{"LOG_IN" | translate}}</button>
+	</form>
+</div>

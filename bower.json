@@ -23,6 +23,9 @@
     "angular-validation-match": "^1.9.0",
     "angular-ui-router": "^0.3.1",
     "ng-file-upload-shim": "^12.0.4",
-    "ng-file-upload": "^12.0.4"
+    "ng-file-upload": "^12.0.4",
+    "angular-translate-loader-static-files": "^2.11.1",
+    "angular-translate-storage-local": "^2.11.1",
+    "angular-translate-handler-log": "^2.11.1"
   }
 }

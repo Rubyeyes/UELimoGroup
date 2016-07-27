@@ -13,7 +13,7 @@ var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 /* ========================================================== 
 User API
 ============================================================ */
-/* Preload comment object */
+/* Preload user object */
 router.param('user', function(req, res, next, id) {
 	User.findById(id)
 		.populate({
@@ -91,5 +91,30 @@ router.get('/usersnameemail', function(req, res) {
 		res.json(usersNameEmail);
 	});
 });
+
+router.get('/checkbyemail', function(req, res, next) {
+	console.log("checkbyemail");
+});
+
+/* Get user info by email */
+// router.get('/email', function(req, res) {
+// 	console.log(req);
+	// User.findOne({email: req.body.email})
+	// 	.populate({
+	// 		path: 'orders',
+	// 		populate: {path: 'fleet'}
+	// 	})
+	// 	.populate({
+	// 		path: 'orders',
+	// 		populate: {path: 'service'}
+	// 	})
+	// 	.exec(function(err, user) {
+	// 		if(err) {return next(err);}
+	// 		if(!user) {return next(new Error('Can\'t find user'));}
+
+	// 		res.user = user;
+	// 		return next();
+	// 	});
+// });
 
 module.exports = router;

@@ -2,9 +2,12 @@ angular.module('MyApp', [
 			'ui.router',
 			'ui.bootstrap',
 			'validation.match',
-			'ngFileUpload'
+			'ngFileUpload',
+			'pascalprecht.translate',// angular-translate
+			'tmh.dynamicLocale'// angular-dynamic-translate
 		])
-		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
+		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'tmhDynamicLocaleProvider', '$translateProvider', 
+				function($stateProvider, $urlRouterProvider, $locationProvider, tmhDynamicLocaleProvider, $translateProvider){
 			$stateProvider
 				.state('home', {
 					url: '/home',
@@ -256,6 +259,15 @@ angular.module('MyApp', [
 			$urlRouterProvider.otherwise('home');
 		    //user html5 route mode
 		    $locationProvider.html5Mode(true);
+
+		    tmhDynamicLocaleProvider.localeLocationPattern('/assets/locales/angular-locale_{{locale}}.js');
+    		$translateProvider.useMissingTranslationHandlerLog();
+		    $translateProvider.useStaticFilesLoader({
+		        prefix: '/assets/locales/locale_',// path to translations files
+		        suffix: '.json'// suffix, currently- extension of the translations
+		    });
+		    $translateProvider.preferredLanguage('en');// is applied on first load
+		    // $translateProvider.useLocalStorage();// saves selected language to localStorage
 		}]);
 		
 		

@@ -3,51 +3,51 @@
 
 	<div class="col-sm-12 col-lg-6" ng-hide="reserveFinished">
 		<div class="panel panel-head panel-reserve">
-			<h1>Reservation</h1>
+			<h1>{{"RESERVATION" | translate}}</h1>
 
 			<form ng-submit="addReservation()" style="margin-top:30px" name="form">
 				<div class="form-group">
-					<label >Name:</label>
+					<label >{{"NAME" | translate}}:</label>
 					<input class="form-control" type="text" ng-model="newUser.username" placeholder="Name" required>
 				</div>
 				<div class="form-group">
-					<label >Email:</label>
+					<label >{{"EMAIL" | translate}}:</label>
 					<input class="form-control" type="email" ng-model="newUser.email" placeholder="Email" required>
 				</div>
 				<div class="form-group">
-					<label >Phone Number:</label>
+					<label >{{"PHONE" | translate}} {{"NUMBER" | translate}}:</label>
 					<input class="form-control" type="number" ng-model="newUser.phone_number" placeholder="Phone Number" required>
 				</div>
 				<div class="form-group">
-					<label >When do you need the service: </label>
+					<label >{{"WHEN_DO_YOU_NEED_THE_SERVICE" | translate}}: </label>
 			  		<input class="form-control" type="datetime-local" ng-model="date" placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
 				</div>
 				<div class="form-group">
-					<label >How many guests:</label>
+					<label >{{"HOW_MANY_GUESTS" | translate}}:</label>
 					<input class="form-control" type="number" ng-model="people" placeholder="Number of People" required>
 				</div>
 				<div class="form-group">
-					<label >Which fleet: </label>
+					<label >{{"WITCH_FLEET" | translate}}: </label>
 					<select class="form-control" ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet" required></select><br>
 					<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
 				</div>
 				<div class="form-group">
-					<label >Which service: </label>
+					<label >{{"WITCH_SERVICE" | translate}}: </label>
 					<select class="form-control" ng-options="service as service.name for service in services track by service._id" ng-model="selectedService" required></select>
 				</div>
 				
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" ng-model="createAccount"> Create an account
+						<input type="checkbox" ng-model="createAccount"> {{"CREATE_AN_ACCOUNT" | translate}}
 					</label>
 				</div>
 				<div class="form-group" ng-show="createAccount" >
-			        <label>Password</label>
+			        <label>{{"PASSWORD" | translate}}</label>
 			        <input type="password" name="password" class="form-control" placeholder="Password" ng-minlength="3" ng-model="newUser.password">
 			    </div>
 
 			    <div class="form-group" ng-show="createAccount">
-			        <label>Confirm Password</label>
+			        <label>{{"CONFIRM_PASSWORD" | translate}}</label>
 			        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.passwordConfirm" match="newUser.password" ng-minlength="3">
 			        <p class="help-block alert alert-danger"
 			        ng-show="form.confirmPassword.$error.match && submitted">

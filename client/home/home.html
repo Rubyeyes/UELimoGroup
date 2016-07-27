@@ -9,12 +9,12 @@ body {
 </style>
 
 <div class="container-home">
-	<div class="jumbotron">
+	<div class="jumbotron jumbotron-home">
 	  <h1>Escalade $100/d</h1>
 	  <br>
 	  <p>
-	  	<a class="btn btn-primary btn-lg btn-index" href="/reserve" role="button">Reserve Online</a>
-	  	<a class="btn btn-primary btn-lg btn-index" href="tel:{{information.phone_number}}" role="button">Call {{information.phone_number}}</a>
+	  	<a class="btn btn-primary btn-lg btn-index" href="/reserve" role="button">{{"ONLING" | translate}} {{"RESERVATION" | translate}}</a>
+	  	<a class="btn btn-primary btn-lg btn-index" href="tel:{{information.phone_number}}" role="button">{{"CALL" | translate}} {{information.phone_number}}</a>
 	  </p>
 	</div>
 </div>
