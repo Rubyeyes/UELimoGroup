@@ -30,5 +30,6 @@
     "PASSWORD": "密码",
     "CONFIRM_PASSWORD": "确认密码",
     "CREATE_AN_ACCOUNT": "创建账号",
+    "FORGET_PASSWORD": "忘记密码",
     "directives.language-select.Language": "简体中文"	
 }

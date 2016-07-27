@@ -30,5 +30,6 @@
     "PASSWORD": "Password",
     "CONFIRM_PASSWORD": "Confirm Password",
     "CREATE_AN_ACCOUNT": "Create an Account",
+    "FORGET_PASSWORD": "Forget Password",
     "directives.language-select.Language": "English"	
 }

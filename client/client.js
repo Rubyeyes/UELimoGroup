@@ -4,7 +4,8 @@ angular.module('MyApp', [
 			'validation.match',
 			'ngFileUpload',
 			'pascalprecht.translate',// angular-translate
-			'tmh.dynamicLocale'// angular-dynamic-translate
+			'tmh.dynamicLocale',// angular-dynamic-translate
+			'ngSanitize'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'tmhDynamicLocaleProvider', '$translateProvider', 
 				function($stateProvider, $urlRouterProvider, $locationProvider, tmhDynamicLocaleProvider, $translateProvider){
@@ -266,7 +267,8 @@ angular.module('MyApp', [
 		        prefix: '/assets/locales/locale_',// path to translations files
 		        suffix: '.json'// suffix, currently- extension of the translations
 		    });
-		    $translateProvider.preferredLanguage('en');// is applied on first load
+		    $translateProvider.preferredLanguage('en');// is applied on first load//
+  			$translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 		    // $translateProvider.useLocalStorage();// saves selected language to localStorage
 		}]);
 		

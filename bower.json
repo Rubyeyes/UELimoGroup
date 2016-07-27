@@ -1,10 +1,10 @@
 {
-  "name": "mytempmlate",
+  "name": "MyApp",
   "homepage": "https://github.com/Rubyeyes/UELimoGroup.git",
   "authors": [
     "Rubyeyes <catian315@gmail.com>"
   ],
-  "description": "FreeX Demo2",
+  "description": "Demo",
   "main": "",
   "keywords": [
     "Self",
@@ -26,6 +26,7 @@
     "ng-file-upload": "^12.0.4",
     "angular-translate-loader-static-files": "^2.11.1",
     "angular-translate-storage-local": "^2.11.1",
-    "angular-translate-handler-log": "^2.11.1"
+    "angular-translate-handler-log": "^2.11.1",
+    "angular-sanitize": "^1.5.8"
   }
 }
