@@ -31,13 +31,14 @@ angular.module('MyApp')
 
 		$scope.forgetPassword = function() {
 			if($scope.user.email) {
-				Auth.checkUserByEmail($scope.user.email).then(function(err, response) {
-					if(err) {
-						$scope.err = "Email is not registered"
-					} else {
-						$scope.notice = "An email of reset password is sent to your email address"
-					}
-				})
+				Auth.checkUserByEmail($scope.user.email);
+				// Auth.checkUserByEmail($scope.user.email).then(function(err, response) {
+				// 	if(err) {
+				// 		$scope.err = "Email is not registered"
+				// 	} else {
+				// 		$scope.notice = "An email of reset password is sent to your email address"
+				// 	}
+				// })
 			} else {
 				$scope.err = "Email is required ~!"
 			}

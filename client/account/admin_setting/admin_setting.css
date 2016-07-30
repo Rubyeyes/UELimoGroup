@@ -2,3 +2,12 @@
 	border-color: gray;
 	margin-top: 30px;
 }
+
+.btn-edit {
+	margin-bottom: 10px;
+	background-color: #337ab7;
+	border-color: #337ab7;
+	color:white;
+	width:200px;
+	border-radius: 5px;
+}

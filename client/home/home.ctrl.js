@@ -47,6 +47,8 @@ angular.module('MyApp')
 			// Info
 			$scope.information = Info.info;
 
+			$scope.styles=[{image: $scope.information.images[0].url}];
+
 			//Send email
 			$scope.sendEmail = function() {
 				Email.sendEmail({	

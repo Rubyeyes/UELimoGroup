@@ -117,6 +117,7 @@ angular.module('MyApp')
 	    	Image.create(files, type, object);
         	$scope.disableServiceEdit(index);
         	$scope.disableFleetEdit(index);
+			$scope.disableInfoEdit();
 	    };
 
 	    // remove a image
@@ -124,5 +125,6 @@ angular.module('MyApp')
 	    	Image.delete(type, object);
         	$scope.disableServiceEdit(index);
         	$scope.disableFleetEdit(index);
+			$scope.disableInfoEdit();
 	    }
 	}])

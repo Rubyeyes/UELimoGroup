@@ -56,6 +56,12 @@ Info.remove({}, function(err) {
 	    info.phone_number = "+1-234-567-8901";
 	    info.company_info = "The 2016 Escalade and Escalade ESV are a perfect combination of sophistication, functionality and technology. At home on all roads, they deliver powerful performance when you need it. Created with craftsmanship not seen in other SUVs, the refined lines and features make one thing immediately apparent – it is first and foremost a Cadillac.";
 	    info.company_name = "UE Limo Group";
+
+	    info.sales = "Escalade $10/Hour";
+	    info.daily = "All car $100/Day";
+
+	    info.type = "info";
+	    
 	    info.save(function(err) {
 	    	if(err) {return next(err);}
 	    })

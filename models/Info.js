@@ -12,6 +12,12 @@ var InfoSchema = new mongoose.Schema({
 	facebook: String,
 	google_plus: String,
 	instagram: String,
+
+	sales:String,
+	daily:String,
+	images: [{type: mongoose.Schema.Types.ObjectId, ref: 'Image'}],
+
+	type:String	
 });
 
 mongoose.model('Info', InfoSchema);

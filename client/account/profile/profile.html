@@ -1,4 +1,14 @@
 
-<h1>Profile</h1>
-<p>username: {{user.username}}</p>
-<p>email: {{user.email}}</p>
+<div class="panel panel-head panel-profile">
+	<h1>{{"PROFILE" | translate}}</h1>
+	<table class="table table-condense table-about">
+		<tr>
+			<th>{{"NAME" | translate}}</th>
+			<td>{{user.username}}</td>
+		</tr>
+		<tr>
+			<th>{{"EMAIL" | translate}}</th>
+			<td>{{user.email}}</td>
+		</tr>
+	</table>
+</div>

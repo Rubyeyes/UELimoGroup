@@ -1,34 +1,154 @@
 
 
 <div class="panel panel-body panel-admin-setting">
-	<h2 >Basic Info</h2>
-	<button type="button" ng-click="enableInfoEdit()" >Edit</button>
+
+	<h2 >{{"BASIC" | translate}} {{"INFO" | translate}}</h2>
+
+	<button type="button" ng-click="enableInfoEdit()" class="btn-edit">{{"EDIT" | translate}}</button>
+	<br>
 	<div ng-hide="editingInfo">
-		<p> Company: {{information.company_info}} </p>
-		<p> Phone Number: {{information.phone_number}} </p>
-		<p> Address: {{information.address}} </p>
-		<p> Email: {{information.email}} </p>
-		<p> Wechat: {{information.wechat}} </p>
-		<p> QQ: {{information.qq}} </p>
-		<p> Weibo: {{information.weibo}} </p>
-		<p> Facebook: {{information.facebook}} </p>
-		<p> Google+: {{information.google_plus}} </p>
-		<p> Instagram: {{information.instagram}} </p>
+		<h3 style="color:gray">Company Info</h3>
+		<table class="table table-condense table-about">
+			<tr>
+				<th>{{"COMPANY" | translate}} {{"INFO" | translate}}</th>
+				<td>{{information.company_info}}</td>
+			</tr>
+			<tr>
+				<th>{{"PHONE" | translate}} {{"NUMBER" | translate}}</th>
+				<td>{{information.phone_number}}</td>
+			</tr>
+			<tr>
+				<th>{{"ADDRESS" | translate}}</th>
+				<td>{{information.address}}</td>
+			</tr>
+			<tr>
+				<th>{{"EMAIL" | translate}}</th>
+				<td>{{information.email}}</td>
+			</tr>
+			<tr>
+				<th>{{"WECHAT" | translate}}</th>
+				<td>{{information.wechat}}</td>
+			</tr>
+			<tr>
+				<th>QQ</th>
+				<td>{{information.qq}}</td>
+			</tr>
+			<tr>
+				<th>{{"WEIBO" | translate}}</th>
+				<td>{{information.weibo}}</td>
+			</tr>
+			<tr>
+				<th>Facebook</th>
+				<td>{{information.facebook}}</td>
+			</tr>
+			<tr>
+				<th>Google+</th>
+				<td>{{information.google_plus}}</td>
+			</tr>
+			<tr>
+				<th>Instagram</th>
+				<td>{{information.instagram}}</td>
+			</tr>		
+		</table>
+
+		<h3 style="color:gray">Front Page Info</h3>		
+		<table class="table table-condense table-about">			
+			<tr>
+				<th>Sales</th>
+				<td>{{information.sales}}</td>
+			</tr>
+			<tr>
+				<th>Daily Price</th>
+				<td>{{information.daily}}</td>
+			</tr>
+			<tr>
+				<th>Home Image</th>
+				<td>
+				    <img src={{infomation.images[0].url}} alt="" style="max-width: 100px;">
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div ng-show="editingInfo">
-		<p> Company: <input ng-model="updateInfo.company_info"> </p>
-		<p> Phone Number: <input ng-model="updateInfo.phone_number"> </p>
-		<p> Address: <input ng-model="updateInfo.address"> </p>
-		<p> Email: <input ng-model="updateInfo.email"> </p>
-		<p> Wechat: <input ng-model="updateInfo.wechat"> </p>
-		<p> QQ: <input ng-model="updateInfo.qq"> </p>
-		<p> Weibo: <input ng-model="updateInfo.weibo"> </p>
-		<p> Facebook: <input ng-model="updateInfo.facebook"> </p>
-		<p> Google+: <input ng-model="updateInfo.google_plus"> </p>
-		<p> Instagram: <input ng-model="updateInfo.instagram"> </p>
+		<h3 style="color:gray">Company Info</h3>
 
-		<button type="button" ng-click="saveInfo(updateInfo)">Save</button>
-		<button type="button" ng-click="disableInfoEdit()">Cancel</button>
+		<table class="table table-condense table-about">
+			<tr>
+				<th>{{"COMPANY" | translate}} {{"INFO" | translate}}</th>
+				<td><input ng-model="updateInfo.company_info"></td>
+			</tr>
+			<tr>
+				<th>{{"PHONE" | translate}} {{"NUMBER" | translate}}</th>
+				<td><input ng-model="updateInfo.phone_number"></td>
+			</tr>
+			<tr>
+				<th>{{"ADDRESS" | translate}}</th>
+				<td><input ng-model="updateInfo.address"></td>
+			</tr>
+			<tr>
+				<th>{{"EMAIL" | translate}}</th>
+				<td><input ng-model="updateInfo.email"></td>
+			</tr>
+			<tr>
+				<th>{{"WECHAT" | translate}}</th>
+				<td><input ng-model="updateInfo.wechat"></td>
+			</tr>
+			<tr>
+				<th>QQ</th>
+				<td><input ng-model="updateInfo.qq"></td>
+			</tr>
+			<tr>
+				<th>{{"WEIBO" | translate}}</th>
+				<td><input ng-model="updateInfo.weibo"></td>
+			</tr>
+			<tr>
+				<th>Facebook</th>
+				<td><input ng-model="updateInfo.facebook"></td>
+			</tr>
+			<tr>
+				<th>Google+</th>
+				<td><input ng-model="updateInfo.google_plus"></td>
+			</tr>
+			<tr>
+				<th>Instagram</th>
+				<td><input ng-model="updateInfo.instagram"></td>
+			</tr>		
+		</table>
+
+		<h3 style="color:gray">Front Page Info</h3>
+
+		<table class="table table-condense table-about">			
+			<tr>
+				<th>Sales</th>
+				<td><input ng-model="updateInfo.sales"></td>
+			</tr>
+			<tr>
+				<th>Daily Price</th>
+				<td><input ng-model="updateInfo.daily"></td>
+			</tr>
+			<tr>
+				<th>Home Image</th>
+				<td>
+				    <p>
+						<img src={{infomation.images[0].url}} alt="" style="max-width: 100px;">
+						<button type="button" class="button" ngf-select="upload($files, 'info', information, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-min-height="100" >Select</button>
+						<button type="button" ng-click="removeImage('info', information, $index)" ng-show={{information.images[0]}}>Delete</button>
+					</p>
+					<div ng-repeat="file in files">
+						<img style="width:100px;" ngf-thumbnail="file || '/thumb.jpg'"/>
+					  	<p>{{progress}}</p>
+						<i ng-show="form.file.$error.required">*required</i><br>
+						<i ng-show="form.file.$error.maxSize">File too large 
+						{{file.size / 1000000|number:1}}MB: max 20M</i>	
+					</div>
+				</td>
+			</tr>
+		</table>	
+		
+		
+
+		<button type="button" ng-click="saveInfo(updateInfo)" class="btn-edit">Save</button>
+		<button type="button" ng-click="disableInfoEdit()" class="btn-edit">Cancel</button>
 	</div>
 </div>
 
@@ -36,7 +156,7 @@
 <div class="panel panel-body panel-admin-setting table-responsive ">
 	<h2>Fleets</h2>
 
-	<button ng-click="enableFleetAdd()" ng-hide="addingNewFleet">Add a New Fleet</button>
+	<button ng-click="enableFleetAdd()" ng-hide="addingNewFleet" class="btn-edit">Add a New Fleet</button>
 
 	<form ng-submit="addFleet()" ng-show="addingNewFleet">
 		<h3>Add a new fleet</h3>
@@ -79,7 +199,7 @@
 				<td ng-hide="editingFleet[$index]">{{fleet.price_day}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.description}}</td>
 				<td ng-hide="editingFleet[$index]">
-					<button ng-click="enableFleetEdit(fleet, $index)">Edit</button>
+					<button ng-click="enableFleetEdit(fleet, $index)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
 				</td>
 				
 				<td ng-show="editingFleet[$index]">
@@ -117,7 +237,7 @@
 <div class="panel panel-body panel-admin-setting table-responsive">
 	<h2>Services</h2>
 
-	<button ng-click="enableServiceAdd()" ng-hide="addingNewService">Add a New Service</button>
+	<button ng-click="enableServiceAdd()" ng-hide="addingNewService" class="btn-edit">Add a New Service</button>
 
 	<form ng-submit="addService()" ng-show="addingNewService">
 		<h3>Add a new service</h3>
@@ -131,13 +251,14 @@
 			<input type="text" ng-model="description" placeholder="Description" required>
 		</div>
 		
-		<button type="submit"  >Confirm</button>
+		<button type="submit">Confirm</button>
 		<button type="button" ng-click="disableServiceAdd()" >Cancel</button>
 	</form>
 
 	<table class="table table-striped table-condensed ">
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>Name</th>
 				<th>Price/hour</th>
 				<th>Description</th>
@@ -146,13 +267,31 @@
 		<tbody>
 			<tr ng-repeat="service in services | orderBy: 'name'">
 
+				<td ng-hide="editingService[$index]">
+					 <img src={{service.images[0].url}} alt="" style="max-width: 100px;"> 
+				</td>
 				<td ng-hide="editingService[$index]">{{service.name}}</td>
 				<td ng-hide="editingService[$index]">{{service.price}}</td>
 				<td ng-hide="editingService[$index]">{{service.description}}</td>
 				<td ng-hide="editingService[$index]">
-					<button ng-click="enableServiceEdit(service, $index)">Edit</button>
+					<button ng-click="enableServiceEdit(service, $index)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
 				</td>
-
+				
+				<td ng-show="editingService[$index]">
+					<img src={{service.images[0].url}} alt="" style="max-width: 100px;"> 
+					<p>
+						<button type="button" class="button" ngf-select="upload($files, 'services', service, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
+						ngf-resize="{width: 400, height: 400}">Select</button>
+						<button type="button" ng-click="removeImage('services', service, $index)" ng-show={{service.images[0]}}>Delete</button>
+					</p>
+					<div ng-repeat="file in files">
+						<img style="width:100px;" ngf-thumbnail="file || '/thumb.jpg'"/>
+					  	<p>{{progress}}</p>
+						<i ng-show="form.file.$error.required">*required</i><br>
+						<i ng-show="form.file.$error.maxSize">File too large 
+						{{file.size / 1000000|number:1}}MB: max 20M</i>	
+					</div>
+				</td>
 				<td ng-show="editingService[$index]"><input ng-model="updateService.name"></td>
 				<td ng-show="editingService[$index]"><input ng-model="updateService.price"></td>
 				<td ng-show="editingService[$index]"><input ng-model="updateService.description"></td>

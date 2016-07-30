@@ -31,5 +31,9 @@
     "CONFIRM_PASSWORD": "确认密码",
     "CREATE_AN_ACCOUNT": "创建账号",
     "FORGET_PASSWORD": "忘记密码",
+    "PROFILE": "基本信息",
+    "COMPANY": "公司",
+    "BASIC": "基本",
+    "EDIT": "编辑",
     "directives.language-select.Language": "简体中文"	
 }

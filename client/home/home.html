@@ -1,16 +1,18 @@
-<style>
-body {
-  background: url('../assets/image/index/2015-cadillac-escalade.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
+<style ng-repeat="style in styles" >
+	body {
+	  background: url({{style.image}}) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
 </style>
 
 <div class="container-home">
 	<div class="jumbotron jumbotron-home">
-	  <h1>Escalade $100/Day</h1>
+	  <h1>{{information.sales}} </h1>
+	  <h1>{{information.daily}}</h1>
 	  <br>
 	  <p>
 	  	<a class="btn btn-primary btn-lg btn-index" href="/reserve" role="button">{{"ONLING" | translate}} {{"RESERVATION" | translate}}</a>

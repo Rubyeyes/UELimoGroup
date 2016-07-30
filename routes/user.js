@@ -33,6 +33,27 @@ router.param('user', function(req, res, next, id) {
 	});
 });
 
+/* Preload user by email */
+router.param('user_by_email', function(req, res, next, email) {
+	console.log(req);
+	User.findOne({'email': email})
+		.populate({
+			path: 'orders',
+			populate: {path: 'fleet'}
+		})
+		.populate({
+			path: 'orders',
+			populate: {path: 'service'}
+		})
+		.exec(function(err, user) {
+		if(err) {return next(err);}
+		if(!user) {return next(new Error('Can\'t find user'));}
+
+		res.user_by_email = user;
+		return next();
+	});
+});
+
 /* User register */
 router.post('/register', function(req, res, next) {
 	if(!req.body.username || !req.body.password || !req.body.email) {
@@ -92,8 +113,9 @@ router.get('/usersnameemail', function(req, res) {
 	});
 });
 
-router.get('/checkbyemail', function(req, res, next) {
+router.get('/:user_by_email', function(req, res, next) {
 	console.log("checkbyemail");
+	res.json(res.user_by_email);
 });
 
 /* Get user info by email */
