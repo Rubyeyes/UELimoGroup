@@ -114,6 +114,9 @@ angular.module('MyApp')
 
 	    // upload on file select or drop
 	    $scope.upload = function (files, type, object, index) {
+	    	if(object.images[0]) {
+	    		Image.delete(type, object);
+	    	}
 	    	Image.create(files, type, object);
         	$scope.disableServiceEdit(index);
         	$scope.disableFleetEdit(index);

@@ -9,7 +9,6 @@ angular.module('MyApp')
 			            url: '/api/' + type + '/' + object._id + '/image/upload',
 			            data: {file: files[i]}
 			        }).then(function (resp) {
-			        	console.log(resp.data);
 			            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
 			        }, function (resp) {
 			            console.log('Error status: ' + resp.status);

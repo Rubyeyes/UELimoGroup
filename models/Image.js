@@ -8,6 +8,7 @@ var ImageSchema = new mongoose.Schema({
 	name: String,
 	date: Date,
 	url: String,
+	public_id: String,
 	fleet: [{type: mongoose.Schema.Types.ObjectId, ref: 'Fleet'}],
 	service: [{type: mongoose.Schema.Types.ObjectId, ref: 'Service'}],
 	info: [{type: mongoose.Schema.Types.ObjectId, ref: 'Info'}]
