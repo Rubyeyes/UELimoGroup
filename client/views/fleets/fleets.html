@@ -10,8 +10,8 @@
 	        <h3> ${{fleet.price}}/Hour | ${{fleet.price_day}}/Day</h3>
 	        <p>{{fleet.brand}} {{fleet.type}}</p>
 	        <p>
-	        	<a href="#" class="btn btn-primary btn-fleet" role="button">{{"RESERVATION" | translate}}</a> 
-	        	<a href="#" class="btn btn-primary btn-fleet" role="button">{{"CALL" | translate}}</a> 
+	        	<a ng-click="reserve(fleet)" class="btn btn-primary btn-fleet" role="button">{{"RESERVATION" | translate}}</a> 
+	        	<a class="btn btn-primary btn-fleet" href="tel:{{information.phone_number}}" role="button">{{"CALL" | translate}}</a>
 	        </p>
 	      </div>
 	    </div>

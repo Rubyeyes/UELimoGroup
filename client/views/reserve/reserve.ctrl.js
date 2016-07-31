@@ -1,9 +1,18 @@
 angular.module('MyApp')
-	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', '$state', '$filter', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth, $state, $filter) {
+	.controller('ReserveCtrl', ['$scope', 'Service', 'Fleet', 'Order', 'user', '$window', 'Email', 'Info', 'Auth', '$state', '$filter', 'Share', function($scope, Service, Fleet, Order, user, $window, Email, Info, Auth, $state, $filter, Share) {
 		$scope.services = Service.services;
 		$scope.fleets = Fleet.fleets;
 		$scope.newUser = {};
+		$scope.selectedFleet = {};
+		$scope.selectedService = {};
 		var currentOrder = {};
+
+		if(Share.getFleet()) {
+			$scope.selectedFleet._id = Share.getFleet();
+		};
+		if(Share.getService()) {
+			$scope.selectedService._id = Share.getService();
+		};
 
 		$scope.addReservation = function() {
 
