@@ -83,10 +83,10 @@ angular.module('MyApp')
 			};
 
 			auth.checkUserByEmail = function(email) {
-				// return $http.get('/api/users/checkbyemail').then(function(response) {
-				// 	return response.data;
-				// })
-				return $http.get('/api/users/' + email);
+				return $http.get('/api/users/' + email).then(function(response) {
+					console.log(response);
+					return response.data;
+				})
 			}
 
 			return auth;

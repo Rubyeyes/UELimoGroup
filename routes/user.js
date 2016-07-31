@@ -35,21 +35,12 @@ router.param('user', function(req, res, next, id) {
 
 /* Preload user by email */
 router.param('user_by_email', function(req, res, next, email) {
-	console.log(req);
-	User.findOne({'email': email})
-		.populate({
-			path: 'orders',
-			populate: {path: 'fleet'}
-		})
-		.populate({
-			path: 'orders',
-			populate: {path: 'service'}
-		})
-		.exec(function(err, user) {
+	console.log(email);
+	User.findOne({'email': email}, function(err, user_by_email) {
 		if(err) {return next(err);}
-		if(!user) {return next(new Error('Can\'t find user'));}
+		if(!user_by_email) {return next(new Error('Can\'t find user'));}
 
-		res.user_by_email = user;
+		res.user_by_email = user_by_email;
 		return next();
 	});
 });
@@ -113,30 +104,13 @@ router.get('/usersnameemail', function(req, res) {
 	});
 });
 
-router.get('/:user_by_email', function(req, res, next) {
-	console.log("checkbyemail");
+
+/* Get user info by email */
+router.get('/:user_by_email', function(req, res, err, next) {
+	if(err) { return next(err)};
 	res.json(res.user_by_email);
 });
 
-/* Get user info by email */
-// router.get('/email', function(req, res) {
-// 	console.log(req);
-	// User.findOne({email: req.body.email})
-	// 	.populate({
-	// 		path: 'orders',
-	// 		populate: {path: 'fleet'}
-	// 	})
-	// 	.populate({
-	// 		path: 'orders',
-	// 		populate: {path: 'service'}
-	// 	})
-	// 	.exec(function(err, user) {
-	// 		if(err) {return next(err);}
-	// 		if(!user) {return next(new Error('Can\'t find user'));}
 
-	// 		res.user = user;
-	// 		return next();
-	// 	});
-// });
 
 module.exports = router;

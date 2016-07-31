@@ -4,5 +4,5 @@
  */
 
 module.exports = {
-	seedDB: true
+	seedDB: false
 }
