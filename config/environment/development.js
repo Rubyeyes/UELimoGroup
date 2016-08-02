@@ -14,7 +14,7 @@ var cloudinaryConfig = function() {
 }
 
 module.exports = {
-	seedDB: true,
+	seedDB: false,
 	mode: 'product',
 	cloudinaryConfig
 }
