@@ -11,24 +11,17 @@ angular.module('MyApp')
 			if(path == '/home') {
 				$scope.colorFooter = {color: 'white'};
 				$scope.footPosition = {			
-				    'position': 'fixed',
-				    'bottom': 0,
-				    'width': '100%'
-				};		
-			} else if(path == '/login' || 'register') {				
+				    position: 'fixed',
+				    bottom: 0,
+				    width: '100%'
+				}		
+			} else if(path == '/login' || '/register') {				
+				$scope.colorFooter = {color: 'black'};	
+			} else {
 				$scope.colorFooter = {color: 'black'};
 				$scope.footPosition = {			
-				    'position': 'fixed',
-				    'bottom': 0,
-				    'width': '100%'
-				};	
-			} else {
-				$scope.colorFooter = {color: 'Black'};
-				$scope.footPosition = {			
-				    'position': 'relative',
-				    'bottom': 0,
-				    'width': '100%'
-				};	
+				    position: 'relative'
+				}
 			};
 	    });
 
