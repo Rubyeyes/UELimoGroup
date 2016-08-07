@@ -8,7 +8,7 @@ angular.module('MyApp')
 
 		$scope.$on('$stateChangeSuccess',function(){
 	        var path = $location.path();
-			if(path === '/home' || path === '/login' || path ==='/register') {
+			if(path === '/home' || path === '/login' || path ==='/register' || path === '/profile' || path === '/history') {
 				if (path == '/home') {
 					$scope.colorFooter = {color: 'white'};
 				} else {

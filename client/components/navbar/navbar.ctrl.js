@@ -11,11 +11,6 @@ angular.module('MyApp')
 			return Auth.currentRole() === 'admin';
 		}
 
-		$scope.logOut = function() {
-			Auth.logOut()
-			$state.go('home');
-		}
-
 		$scope.collaps = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
 		};

@@ -1,9 +1,14 @@
 angular.module('MyApp')
-	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleet', 'Service', 'Upload', 'Image', function($scope, Info, Fleet, Service, Upload, Image) {
+	.controller('AdminSettingCtrl', ['$scope', 'Info', 'Fleet', 'Service', 'Upload', 'Image', 'Auth', '$state', function($scope, Info, Fleet, Service, Upload, Image, Auth, $state) {
 		// Basic Info
 		$scope.information = Info.info;
 		$scope.updateInfo = {};
 		$scope.editingInfo = false;
+
+		$scope.logOut = function() {
+			Auth.logOut()
+			$state.go('home');
+		}
 
 		$scope.enableInfoEdit = function() {
 			$scope.editingInfo = true;

@@ -4,3 +4,16 @@
 	margin-top: 30px;
 	padding:40px;
 }
+
+.btn-logout {
+	width: 100%;	
+	background-color: red;
+	border-color: red;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+
+.btn-logout > a {
+	color: white;
+	font-weight: bold;
+}

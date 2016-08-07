@@ -1,6 +1,18 @@
 .panel-auth {
-	border: 1px solid #eee;
-	background-color: #eee;
+	background-color: transparent;
 	margin-top: 30px;
 	padding:40px;
+}
+
+.btn-auth {	
+	background-color: #a1774f;
+	border-color: #a1774f;
+}
+
+.auth-title {
+	color:#555;
+}
+
+.hr-auth {
+	margin-top: 3px;
 }

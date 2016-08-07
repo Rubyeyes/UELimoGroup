@@ -38,9 +38,6 @@
           <a ng-show="isAdmin()" href="/admin_setting" class="dropdown-toggle" data-toggle="dropdown" role="button">
             {{"HELLO" | translate}}~! {{ currentUser() }} <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li ng-click="logOut()"><a href="#">{{"LOG_OUT" | translate}}</a></li>
-          </ul>
         </li>
         <li style="margin-top:14px; margin-left:12px;">
           <select ng-model="locale"

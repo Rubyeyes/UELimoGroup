@@ -16,3 +16,12 @@
 .navbar-default .navbar-brand > img {
 	max-width: 49px;
 }
+
+.nav-pills>li.active>a {
+	background-color: #a1774f;
+	border-radius: 1px;
+}
+
+.nav-pills>li.active>a:hover {
+	background-color: #a1774f;
+}

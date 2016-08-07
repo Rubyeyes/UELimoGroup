@@ -8,9 +8,8 @@
 
 <div class="panel panle-head panel-auth">
 	<form ng-submit="logIn()" name="form">
-		<h2>{{"LOG_IN" | translate}}</h2>
-
-		<br>
+		<h2 class="auth-title">{{"LOG_IN" | translate}}</h2>
+		<hr class="hr-auth">
 
 		<div class="form-group">
 			<label>{{"EMAIL" | translate}}</label>
@@ -25,6 +24,6 @@
 
 		<br>
 
-		<button type="submit" class="btn btn-primary">{{"LOG_IN" | translate}}</button>
+		<button type="submit" class="btn btn-primary btn-auth">{{"LOG_IN" | translate}}</button>
 	</form>
 </div>

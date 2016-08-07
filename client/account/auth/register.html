@@ -4,9 +4,8 @@
 
 <div class="panel panel-head panel-auth">
   <form ng-submit="register(form)" name="form" >
-      <h2>{{"SIGN_UP" | translate}}</h2>
-      
-      <br>
+      <h2 class="auth-title">{{"SIGN_UP" | translate}}</h2>
+      <hr class="hr-auth">
 
       <div class="form-group">
         <label>{{"NAME" | translate}}</label>
@@ -51,7 +50,7 @@
       <br>
 
       <p>
-        <button type="submit" class="btn btn-primary">{{"SIGN_UP" | translate}}</button> 
+        <button type="submit" class="btn btn-primary btn-auth">{{"SIGN_UP" | translate}}</button> 
         <button class="btn btn-default" href="/login">{{"LOG_IN" | translate}}</button>
       </p>
   </form>
