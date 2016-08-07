@@ -8,10 +8,27 @@ angular.module('MyApp')
 
 		$scope.$on('$stateChangeSuccess',function(){
 	        var path = $location.path();
-			if(path === '/home') {
-				$scope.colorFooter = {color: 'white'};		
+			if(path == '/home') {
+				$scope.colorFooter = {color: 'white'};
+				$scope.footPosition = {			
+				    'position': 'fixed',
+				    'bottom': 0,
+				    'width': '100%'
+				};		
+			} else if(path == '/login' || 'register') {				
+				$scope.colorFooter = {color: 'black'};
+				$scope.footPosition = {			
+				    'position': 'fixed',
+				    'bottom': 0,
+				    'width': '100%'
+				};	
 			} else {
 				$scope.colorFooter = {color: 'Black'};
+				$scope.footPosition = {			
+				    'position': 'relative',
+				    'bottom': 0,
+				    'width': '100%'
+				};	
 			};
 	    });
 

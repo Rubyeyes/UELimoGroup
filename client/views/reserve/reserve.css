@@ -14,3 +14,8 @@
 .panel-reserve > form > div > label {
 	font-weight: bold;
 }
+
+.btn-reserve {
+	background-color: #a1774f;
+	border-color: #a1774f;
+}

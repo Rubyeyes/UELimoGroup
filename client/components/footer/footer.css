@@ -8,3 +8,9 @@
 	font-weight: lighter;
 	margin-right: 5px;
 }
+
+.footer-home {	
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
