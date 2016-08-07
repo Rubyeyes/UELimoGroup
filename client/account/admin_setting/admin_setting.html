@@ -205,8 +205,7 @@
 				<td ng-show="editingFleet[$index]">
 					<img src={{fleet.images[0].url}} alt="" style="max-width: 100px;"> 
 					<p>
-						<button type="button" class="button" ngf-select="upload($files, 'fleets', fleet, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-						ngf-resize="{width: 400, height: 400}">Select</button>
+						<button type="button" class="button" ngf-select="upload($files, 'fleets', fleet, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</button>
 						<button type="button" ng-click="removeImage('fleets', fleet, $index)" ng-show={{fleet.images[0]}}>Delete</button>
 					</p>
 					<div ng-repeat="file in files">
@@ -280,8 +279,7 @@
 				<td ng-show="editingService[$index]">
 					<img src={{service.images[0].url}} alt="" style="max-width: 100px;"> 
 					<p>
-						<button type="button" class="button" ngf-select="upload($files, 'services', service, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-						ngf-resize="{width: 400, height: 400}">Select</button>
+						<button type="button" class="button" ngf-select="upload($files, 'services', service, $index)" ng-model="files" name="files" ngf-multiple="true" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</button>
 						<button type="button" ng-click="removeImage('services', service, $index)" ng-show={{service.images[0]}}>Delete</button>
 					</p>
 					<div ng-repeat="file in files">
