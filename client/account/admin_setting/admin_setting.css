@@ -11,3 +11,7 @@
 	width:200px;
 	border-radius: 5px;
 }
+
+table.table-about > tbody > tr > td > input{
+	width: 100%;
+}

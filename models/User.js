@@ -10,6 +10,8 @@ UserSchema = new mongoose.Schema({
 	role: String,
 	hash: String,
 	salt: String,
+	resetPasswordToken: String,
+	resetPasswordExpire: String,
 	orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}]
 });
 
@@ -39,6 +41,11 @@ UserSchema.methods.generateJWT = function() {
 		role: this.role,
 		exp: parseInt(exp.getTime() / 1000),
 	}, 'SECRET');
+};
+
+UserSchema.methods.generateForgetPasswordToken = function() {
+	this.token = crypto.randomBytes(16).toString('hex');
+	return this.token;
 };
 
 mongoose.model('User', UserSchema);

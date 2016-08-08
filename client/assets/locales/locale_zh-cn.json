@@ -35,5 +35,6 @@
     "COMPANY": "公司",
     "BASIC": "基本",
     "EDIT": "编辑",
+    "RESET_PASSWORD": "重置密码",
     "directives.language-select.Language": "简体中文"	
 }

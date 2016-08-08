@@ -35,5 +35,6 @@
     "COMPANY": "Company",
     "BASIC": "Basic",
     "EDIT": "Edit",
+    "RESET_PASSWORD": "Reset Password",
     "directives.language-select.Language": "English"	
 }

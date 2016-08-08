@@ -82,9 +82,12 @@ angular.module('MyApp')
 				})
 			};
 
-			auth.checkUserByEmail = function(email) {
-				return $http.get('/api/users/' + email).then(function(response) {
-					console.log(response);
+			auth.resetPassword = function(email) {
+				return $http.post('/api/users/forget', email).then(function(err, response) {
+					if(err) {
+						console.log(err);
+						return err;
+					}
 					return response.data;
 				})
 			}

@@ -30,18 +30,21 @@ angular.module('MyApp')
 		};
 
 		$scope.forgetPassword = function() {
-			if($scope.user.email) {
-				Auth.checkUserByEmail($scope.user.email);
-				// Auth.checkUserByEmail($scope.user.email).then(function(err, response) {
-				// 	if(err) {
-				// 		$scope.err = "Email is not registered"
-				// 	} else {
-				// 		$scope.notice = "An email of reset password is sent to your email address"
-				// 	}
-				// })
-			} else {
-				$scope.err = "Email is required ~!"
-			}
+			$state.go('forget');
 		};
+
+		$scope.resetPassword = function() {
+			console.log($scope.forgetEmail);
+			var sendEmail = {
+				email: $scope.forgetEmail
+			}
+			Auth.resetPassword(sendEmail).then(function(err) {
+				if(err) {
+					$scope.error = err.message;
+				} else {
+					$scope.notice = "An email has been sent to" + sendEmail.email
+				}
+			})
+		}
  
 	}]);

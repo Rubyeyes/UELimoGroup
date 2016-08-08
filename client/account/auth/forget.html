@@ -1,0 +1,21 @@
+<div ng-show="err" class="alert alert-danger row" style="margin:10px;">
+	<span>{{ err }}</span>
+</div>
+
+<div ng-show="notice" class="alert alert-success row" style="margin:10px;">
+	<span>{{ notice }}</span>
+</div>
+
+<div class="panel panle-head panel-auth">
+	<form ng-submit="resetPassword(email)" name="form">
+		<h2 class="auth-title">{{"FORGET_PASSWORD" | translate}}</h2>
+		<hr class="hr-auth">
+
+		<div class="form-group">
+			<label>{{"EMAIL" | translate}}</label>
+			<input type="email" name="email" class="form-control" placeholder="Email" ng-model="forgetEmail" required>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-auth">{{"RESET_PASSWORD" | translate}}</button>
+	</form>
+</div>

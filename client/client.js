@@ -53,6 +53,11 @@ angular.module('MyApp', [
 						}
 					}]
 				})
+				.state('forget', {
+					url: '/forget',
+					templateUrl: '/account/auth/forget.html',
+					controller: 'AuthCtrl'
+				})
 				.state('profile', {
 					url: '/profile',
 					views: {

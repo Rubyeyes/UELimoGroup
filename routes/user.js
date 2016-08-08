@@ -35,7 +35,6 @@ router.param('user', function(req, res, next, id) {
 
 /* Preload user by email */
 router.param('user_by_email', function(req, res, next, email) {
-	console.log(email);
 	User.findOne({'email': email}, function(err, user_by_email) {
 		if(err) {return next(err);}
 		if(!user_by_email) {return next(new Error('Can\'t find user'));}
@@ -106,9 +105,25 @@ router.get('/usersnameemail', function(req, res) {
 
 
 /* Get user info by email */
-router.get('/:user_by_email', function(req, res, err, next) {
-	if(err) { return next(err)};
-	res.json(res.user_by_email);
+router.post('/forget', function(req, res, next) {
+	User.findOne({'email': req.body.email}, function(err, user) {
+		if(err) {return next(err);}
+		if(!user) {
+			res.json({message: "Cannot find user"})
+			return next();
+		}
+
+		var token = user.generateForgetPasswordToken();
+
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpire = Date.now() + 3600000; // 1 hour
+
+        user.save(function(err, user) {
+        	if (err) { return next(err)}
+        	console.log(user);
+        });
+	});
 });
 
 
