@@ -73,7 +73,7 @@ router.put('/:fleet/edit', auth, function(req, res) {
 
 /* Delete a fleet */
 router.delete('/:fleet/delete', auth, function(req, res) {
-	Fleet.findOne({_id: res.post._id}, function(err, fleet) {
+	Fleet.findOne({_id: res.fleet._id}, function(err, fleet) {
 		if(err) {return next(err)};
 		fleet.remove();
 	})
