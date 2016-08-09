@@ -11,39 +11,39 @@
 	<div class="panel panel-body panel-about table-responsive">
 		<h1>{{"CONTACT" | translate}} {{"INFO" | translate}}</h1>
 		<table class="table table-condense table-about">
-			<tr>
+			<tr ng-show=information.phone_number>
 				<th>{{"PHONE" | translate}} {{"NUMBER" | translate}}</th>
 				<td>{{information.phone_number}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.address>
 				<th>{{"ADDRESS" | translate}}</th>
 				<td>{{information.address}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.email>
 				<th>{{"EMAIL" | translate}}</th>
 				<td>{{information.email}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.wechat>
 				<th>{{"WECHAT" | translate}}</th>
 				<td>{{information.wechat}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.qq>
 				<th>QQ</th>
 				<td>{{information.qq}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.weibo>
 				<th>{{"WEIBO" | translate}}</th>
 				<td>{{information.weibo}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.facebook>
 				<th>Facebook</th>
 				<td>{{information.facebook}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.google_plus>
 				<th>Google+</th>
 				<td>{{information.google_plus}}</td>
 			</tr>
-			<tr>
+			<tr ng-show=information.instagram>
 				<th>Instagram</th>
 				<td>{{information.instagram}}</td>
 			</tr>
