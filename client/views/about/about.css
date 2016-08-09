@@ -13,6 +13,17 @@
 
 .jumbotron-about {
 	margin-top:30px;
+	background-color: #515151;
+}
+
+.jumbotron-about > h1 {
+	color:#9b7552;
+}
+
+.jumbotron-about > h1 > div {
+	color:white;
+	font-size:40px;
+	text-align: right;
 }
 
 .table-about > tbody > tr > th {
