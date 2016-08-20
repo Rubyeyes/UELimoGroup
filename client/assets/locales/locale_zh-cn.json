@@ -23,7 +23,7 @@
 	"PICK_YOUR_FAOURITE_VEHICLE": "挑选你最喜欢的车",
 	"ENJOY_YOUR_TRIP": "享受您的行程",
 	"NAME": "名字",
-	"WHEN_DO_YOU_NEED_THE_SERVICE": "什么时候需要服务",
+	"WHEN_DO_YOU_NEED_THE_SERVICE": "时间",
 	"HOW_MANY_GUESTS": "多少位乘客",
 	"WITCH_FLEET": "车型", 
 	"WITCH_SERVICE": "服务",
@@ -49,7 +49,7 @@
     "DAY": "天",
     "OUT_TOWN": "起，如果出洛杉矶县或者橙县",
     "CONTECT_YOU": "我们会马上联系您来确认价格和行程",
-    "TYPE": "租赁形式",
+    "TYPE": "用车形式",
     "SINGLE_TRIP": "单程",
     "WHOLE_DAY": "包车",
     "directives.language-select.Language": "简体中文"	
