@@ -8,6 +8,10 @@
 	height: 200px;
 }
 
+.thumbnail-service {
+	height: 450px;
+}
+
 .service-head {
 	text-align: center;
 	margin-top: 30px;
@@ -19,4 +23,8 @@
 	margin-right: 10px;
 	background-color: #a1774f;
 	border-color: #a1774f;
+}
+
+.caption > div.description {
+	height: 120px;
 }

@@ -170,6 +170,18 @@
 			<input type="number" ng-model="price" placeholder="Price/Hour" required>
 		</div>
 		<div class="form-group">
+			<input type="number" ng-model="price_day" placeholder="Price/Day" required>
+		</div>
+		<div class="form-group">
+			<input type="number" ng-model="price_day_out" placeholder="Price/Day Out of City" required>
+		</div>
+		<div class="form-group">
+			<input type="number" ng-model="price_mile" placeholder="Price/Mile" required>
+		</div>
+		<div class="form-group">
+			<input type="number" ng-model="initial_fee" placeholder="Initial Fee" required>
+		</div>
+		<div class="form-group">
 			<input type="text" ng-model="description" placeholder="Description" required>
 		</div>
 		
@@ -183,8 +195,11 @@
 				<th>Image</th>
 				<th>Brand</th>
 				<th>Type</th>
+				<th>Initial Fee</th>
 				<th>Price/Hour</th>
+				<th>Price/Mile</th>
 				<th>Price/Day</th>
+				<th>Price/Day Out</th>
 				<th>Description</th>
 			</tr>
 		</thead>
@@ -195,8 +210,11 @@
 				</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.brand}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.type}}</td>
+				<td ng-hide="editingFleet[$index]">{{fleet.initial_fee}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.price}}</td>
+				<td ng-hide="editingFleet[$index]">{{fleet.price_mile}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.price_day}}</td>
+				<td ng-hide="editingFleet[$index]">{{fleet.price_day_out}}</td>
 				<td ng-hide="editingFleet[$index]">{{fleet.description}}</td>
 				<td ng-hide="editingFleet[$index]">
 					<button ng-click="enableFleetEdit(fleet, $index)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
@@ -218,8 +236,11 @@
 				</td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.brand"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.type"></td>
+				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.initial_fee"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price"></td>
+				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price_mile"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price_day"></td>
+				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.price_day_out"></td>
 				<td ng-show="editingFleet[$index]"><input ng-model="updateFleet.description"></td>
 				<td ng-show="editingFleet[$index]">
 					<button ng-click="saveFleet(fleet, updateFleet, $index)">Save</button>
@@ -264,7 +285,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="service in services | orderBy: 'name'">
+			<tr ng-repeat="service in services">
 
 				<td ng-hide="editingService[$index]">
 					 <img src={{service.images[0].url}} alt="" style="max-width: 100px;"> 

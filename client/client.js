@@ -5,10 +5,12 @@ angular.module('MyApp', [
 			'ngFileUpload',
 			'pascalprecht.translate',// angular-translate
 			'tmh.dynamicLocale',// angular-dynamic-translate
-			'ngSanitize'
+			'ngSanitize',
+			'uiGmapgoogle-maps', //angular-google-maps
+			'ngAutocomplete', //auto complete for google address
 		])
-		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'tmhDynamicLocaleProvider', '$translateProvider', 
-				function($stateProvider, $urlRouterProvider, $locationProvider, tmhDynamicLocaleProvider, $translateProvider){
+		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'tmhDynamicLocaleProvider', '$translateProvider', 'uiGmapGoogleMapApiProvider',
+				function($stateProvider, $urlRouterProvider, $locationProvider, tmhDynamicLocaleProvider, $translateProvider, uiGmapGoogleMapApiProvider){
 			$stateProvider
 				.state('home', {
 					url: '/home',
@@ -246,8 +248,8 @@ angular.module('MyApp', [
 						user: ['Auth', function(Auth) {
 							return Auth.getUserInfo();
 						}],
-						infoPromise: ['Service', function(Service) {
-							return Service.getAll();
+						infoPromise: ['Info', function(Info) {
+							return Info.getAll();
 						}]
 					}		
 				})
@@ -275,6 +277,10 @@ angular.module('MyApp', [
 		    $translateProvider.preferredLanguage('en');// is applied on first load//
   			$translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 		    // $translateProvider.useLocalStorage();// saves selected language to localStorage
+
+		    uiGmapGoogleMapApiProvider.configure({
+	            china: true
+	        }); //They serve this modified system (translation between GCJ-02 and WSG-84) at maps.google.cn
 		}]);
 		
 		

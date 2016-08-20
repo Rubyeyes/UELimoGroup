@@ -1,11 +1,11 @@
-
 <div class="container-fluid">
 
-	<div class="col-sm-12 col-lg-6" ng-hide="reserveFinished">
-		<div class="panel panel-head panel-reserve">
-			<h1>{{"RESERVATION" | translate}}</h1>
+	<div class="col-sm-12 col-lg-offset-3 col-lg-6" ng-hide="reserveFinished">
 
-			<form ng-submit="addReservation()" style="margin-top:30px" name="form">
+		<h1 style="text-align:center;">{{"RESERVATION" | translate}}</h1>
+
+		<form ng-submit="addReservation()" style="margin-top:30px" name="form">
+			<div class="panel panel-head panel-reserve" ng-show="basicInfo">
 				<div class="form-group">
 					<label >{{"NAME" | translate}}:</label>
 					<input class="form-control" type="text" ng-model="newUser.username" placeholder="Name" required>
@@ -18,45 +18,137 @@
 					<label >{{"PHONE" | translate}} {{"NUMBER" | translate}}:</label>
 					<input class="form-control" type="number" ng-model="newUser.phone_number" placeholder="Phone Number" required>
 				</div>
-				<div class="form-group">
-					<label >{{"WHEN_DO_YOU_NEED_THE_SERVICE" | translate}}: </label>
-			  		<input class="form-control" type="datetime-local" ng-model="date" placeholder="Date: yyyy-MM-dd Time: HH:mm:ss" min="2001-01-01T00:00:00" max="2025-12-31T00:00:00" required />
-				</div>
-				<div class="form-group">
-					<label >{{"HOW_MANY_GUESTS" | translate}}:</label>
-					<input class="form-control" type="number" ng-model="people" placeholder="Number of People" required>
-				</div>
+				<button type="button" type="button" class="float-right btn btn-primary" ng-click="showNextService()">{{"NEXT" | translate}}</button>
+			</div>
+
+			<div class="panel panel-head panel-reserve" ng-show="serviceInfo">
 				<div class="form-group">
 					<label >{{"WITCH_FLEET" | translate}}: </label>
-					<select class="form-control" ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet" required></select><br>
+					<select class="form-control" ng-options="fleet as fleet.type for fleet in fleets track by fleet._id" ng-model="selectedFleet" required></select>
+					<br>
 					<img src={{selectedFleet.images[0].url}} alt={{selectedFleet.type}}>
 				</div>
 				<div class="form-group">
 					<label >{{"WITCH_SERVICE" | translate}}: </label>
 					<select class="form-control" ng-options="service as service.name for service in services track by service._id" ng-model="selectedService" required></select>
+					<br>
+					<img src={{selectedService.images[0].url}} alt={{selectedService.name}}>
 				</div>
-				
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" ng-model="createAccount"> {{"CREATE_AN_ACCOUNT" | translate}}
-					</label>
+				<div class="form-group">
+					<label >{{"HOW_MANY_GUESTS" | translate}}:</label>
+					<input class="form-control" type="number" ng-model="people" placeholder="Number of People" required>
 				</div>
-				<div class="form-group" ng-show="createAccount" >
-			        <label>{{"PASSWORD" | translate}}</label>
-			        <input type="password" name="password" class="form-control" placeholder="Password" ng-minlength="3" ng-model="newUser.password">
-			    </div>
+				<button type="button" class="float-left btn btn-primary" ng-click="showPrevBasic()">{{"PREV" | translate}}</button>
+				<button type="button" class="float-right btn btn-primary" ng-click="showNextTravel()">{{"NEXT" | translate}}</button>
+			</div>
 
-			    <div class="form-group" ng-show="createAccount">
-			        <label>{{"CONFIRM_PASSWORD" | translate}}</label>
-			        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.passwordConfirm" match="newUser.password" ng-minlength="3">
-			        <p class="help-block alert alert-danger"
-			        ng-show="form.confirmPassword.$error.match && submitted">
-			        Passwords must match.
-			        </p>
+			<div class="panel panel-head panel-reserve" ng-show="travelInfo">
+				<div class="form-group">
+					<label >{{"WHEN_DO_YOU_NEED_THE_SERVICE" | translate}}: </label>
+			  		<input class="form-control" type="datetime-local" ng-model="date" placeholder="Date: yyyy-MM-dd Time: HH:mm:ss" min{{"PREV" | translate}}="2001-01-01T00:00:00" max="2025-12-31T00:00:00" required />
+				</div>
+				<div class="form-group">
+					<label >{{"ORIGIN" | translate}}:</label>
+					<input class="form-control" type="text" ng-autocomplete ng-model="origin" placeholder="Origin" details="details" options="options" required >
+				</div>
+				<div class="form-group">
+					<label >{{"DESTINATION" | translate}}:</label>
+					<input class="form-control" type="text" ng-autocomplete ng-model="destination" placeholder="Destination" details="details" options="options" required>
+				</div>
+				<div class="form-group">
+				    <label for="singleSelect"> {{"TYPE" | translate}} </label>
+				    <select name="singleSelect" ng-model="tripType" required>
+						<option value="singleTrip">{{"SINGLE_TRIP" | translate}}</option>
+						<option value="wholeDay">{{"WHOLE_DAY" | translate}}</option>
+				    </select>
 			    </div>
-				<button type="submit" class="btn btn-primary btn-reserve" >Confirm</button>
-			</form>
-		</div>
+				<button type="button" class="float-left btn btn-primary" ng-click="showPrevService()">{{"PREV" | translate}}</button>
+				<button type="button" class=" float-right btn btn-primary" ng-click="getQuote()">{{"ESTIMATED_QUOTE" | translate}}</button>
+			</div>
+				
+			<div class="panel panel-head panel-reserve">
+	
+		        <ui-gmap-google-map control="map.control" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
+		          <marker coords="marker.center"></marker>
+		        </ui-gmap-google-map>
+
+			    <div ng-show="confirmInfo">
+			    	<div ng-show="singleTrip">
+						<h3>{{"ESTIMATED_QUOTE" | translate}}: {{quote | currency : "$"}}</h3>
+					</div>
+					<div ng-show="wholeDay">
+						<p>
+					        <h3>${{selectedFleet.price_day}}/{{"DAY" | translate}}</h3>
+					        <p>${{selectedFleet.price_day_out}}/{{"DAY" | translate}} {{"OUT_TOWN" | translate}}</p>
+					        <p>{{"CONTECT_YOU" | translate}}</p>
+				        </p>
+					</div>
+					<table class="table table-condense table-about">
+						<tr>
+							<th>{{"NAME" | translate}}</th>
+							<td>{{newUser.username}}</td>
+						</tr>
+						<tr>
+							<th>{{"EMAIL" | translate}}</th>
+							<td>{{newUser.email}}</td>
+						</tr>
+						<tr>
+							<th>{{"PHONE" | translate}} {{"NUMBER" | translate}}</th>
+							<td>{{newUser.phone_number}}</td>
+						</tr>
+						<tr>
+							<th>{{"FLEETS" | translate}}</th>
+							<td>{{selectedFleet.brand}} {{selectedFleet.type}}</td>
+						</tr>
+						<tr>
+							<th>{{"SERVICES" | translate}}</th>
+							<td>{{selectedService.name}}</td>
+						</tr>
+						<tr>
+							<th>{{"GUESTS_NUMBER" | translate}}</th>
+							<td>{{people}}</td>
+						</tr>
+						<tr>
+							<th>{{"DATE" | translate}}</th>
+							<td>{{date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+						</tr>
+						<tr>
+							<th>{{"ORIGIN" | translate}}</th>
+							<td>{{origin}}</td>
+						</tr>
+						<tr>
+							<th>{{"DESTINATION" | translate}}</th>
+							<td>{{destination}}</td>
+						</tr>
+					</table>
+
+					<div class="checkbox" ng-show="showCreateAccount">
+						<label>
+							<input type="checkbox" ng-model="createAccount"> {{"CREATE_AN_ACCOUNT" | translate}}
+						</label>
+					</div>
+					<div class="form-group" ng-show="createAccount" >
+				        <label>{{"PASSWORD" | translate}}</label>
+				        <input type="password" name="password" class="form-control" placeholder="Password" ng-minlength="3" options="options" details="details" ng-model="newUser.password">
+				    </div>
+
+				    <div class="form-group" ng-show="createAccount">
+				        <label>{{"CONFIRM_PASSWORD" | translate}}</label>
+				        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" ng-model="user.passwordConfirm" match="newUser.password" ng-minlength="3">
+				        <p class="help-block alert alert-danger"
+				        ng-show="form.confirmPassword.$error.match && submitted">
+				        Passwords must match.
+				        </p>
+				    </div>
+					<button type="button" class="float-left btn btn-primary" ng-click="showPrevTravel()">{{"PREV" | translate}}</button>
+					<button type="submit" class="float-right btn btn-primary btn-reserve" >{{"CONFIRM" | translate}}</button>
+				</div>
+			</div>
+		</form>
 	</div>
 
 </div>
+<!-- <div class="form-group">
+	<label >{{"ORIGIN" | translate}}:</label>
+	<input class="form-control" type="text" ng-autocomplete ng-model="origin" placeholder="Origin" details="details" options="options" required >
+</div> -->

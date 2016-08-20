@@ -39,14 +39,20 @@ angular.module('MyApp')
 			Fleet.create({
 				brand: $scope.brand,
 				type: $scope.type,
+				initial_fee: $scope.initial_fee,
 				price: $scope.price,
+				price_mile: $scope.price_mile,
 				price_day: $scope.price_day,
+				price_day_out: $scope.price_day_out,
 				description: $scope.description
 			});
 			$scope.brand = '';
 			$scope.type = '';
+			$scope.initial_fee = '';
 			$scope.price = '';
+			$scope.price_mile = '';
 			$scope.price_day = '';
+			$scope.price_day_out = '';
 			$scope.description = '';
 			$scope.disableFleetAdd();
 		};

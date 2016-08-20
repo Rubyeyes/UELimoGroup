@@ -7,7 +7,8 @@
 	    <div class="thumbnail thumbnail-fleet">
 	      <img src={{fleet.images[0].url}} alt={{fleet.type}}>
 	      <div class="caption">
-	        <h3> ${{fleet.price}}/Hour | ${{fleet.price_day}}/Day</h3>
+	        <h3>${{fleet.price_day}}/{{"DAY" | translate}}</h3>
+	        <p>${{fleet.price_day_out}}/{{"DAY" | translate}} {{"OUT_TOWN" | translate}}</p>
 	        <p>{{fleet.brand}} {{fleet.type}}</p>
 	        <p>
 	        	<a ng-click="reserve(fleet)" class="btn btn-primary btn-fleet" role="button">{{"RESERVATION" | translate}}</a> 

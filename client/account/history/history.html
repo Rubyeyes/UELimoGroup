@@ -7,19 +7,25 @@
 		<thead>
 			<tr>
 				<th>Order Number</th>
-				<th>Date</th>
 				<th>People</th>
 				<th>Car Type</th>
 				<th>Service</th>
+				<th>Date</th>
+				<th>Origin</th>
+				<th>Destination</th>
+				<th>Quote</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="order in orders">
 				<td>{{order._id}}</td>
-				<td>{{order.date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
 				<td>{{order.people}}</td>
 				<td>{{order.fleet[0].type}}</td>
 				<td>{{order.service[0].name}}</td>
+				<td>{{order.date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+				<td>{{order.origin}}</td>
+				<td>{{order.destination}}</td>
+				<td>{{order.quote | currency}}</td>
 			</tr>
 		</tbody>
 	</table>

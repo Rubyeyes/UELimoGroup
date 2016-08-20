@@ -32,6 +32,12 @@ angular.module('MyApp')
 					headers: {Authorization: 'Bearer '+ Auth.getToken()}
 				})
 			}; 
+			//get a single fleet
+			o.get = function(id) {
+				return $http.get('/api/fleets/' + id).then(function(res) {
+					return res.data;
+				});
+			};
 
 			return o;
 		}])

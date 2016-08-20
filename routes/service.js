@@ -64,8 +64,10 @@ router.get('/:service', function(req, res){
 });
 
 /* Update a service */
-router.put('/:service/edit', auth, function(req, res) {
-	Service.findOneAndUpdate({_id: res.service._id}, req.body, {new:true}, function(err, service) {
+router.put('/:service/edit', auth, function(req, res, next) {
+	console.log(req.body);
+	console.log(res.service);
+	Service.findOneAndUpdate({_id: res.service._id}, req.body, {new:true}, function(err, service, next) {
 		if (err) {return next(err);}
 		res.json(service)
 	});

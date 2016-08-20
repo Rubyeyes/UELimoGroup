@@ -55,10 +55,11 @@ router.param('fleet', function(req, res, next, id, file){
 
 /* Get one fleet*/
 router.get('/:fleet', function(req, res){
-	res.fleet.populate('orders')
+	Fleet.findById(res.fleet._id)
 			.populate('images')
+			.populate('orders')
 			.exec(function(err, fleet) {
-				if(err) {return next(err);}		
+				if(err) {return next(err);}	
 				res.json(fleet);
 			})
 });

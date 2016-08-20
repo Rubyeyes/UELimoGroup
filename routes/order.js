@@ -20,6 +20,7 @@ router.post('/', function(req, res, next) {
 	var order = new Order(req.body);
 
 	order.save(function(err, order) {
+		console.log(order.user[0]);
 		if(err){return next(err);}
 		
 		if(order.user[0]) {			

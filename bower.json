@@ -27,6 +27,7 @@
     "angular-translate-loader-static-files": "^2.11.1",
     "angular-translate-storage-local": "^2.11.1",
     "angular-translate-handler-log": "^2.11.1",
-    "angular-sanitize": "^1.5.8"
+    "angular-sanitize": "^1.5.8",
+    "angular-google-maps": "^2.3.3"
   }
 }
